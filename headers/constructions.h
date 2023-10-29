@@ -6,16 +6,16 @@
 
 class construction {
 private:
-    unsigned int hp;
+    unsigned int hp{};
 public:
     construction() = default;
     ~construction() = default;
     construction(unsigned int hp) : hp(hp) {}
 
-    friend std::ostream& operator<<(std::ostream &, construction&);
+    friend std::ostream& operator<<(std::ostream &, const construction&);
 };
 
-std::ostream &operator<<(std::ostream &out, construction &obj) {
+std::ostream &operator<<(std::ostream &out, const construction &obj) {
     out << obj.hp << " HP";
     return out;
 }
