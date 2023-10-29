@@ -10,7 +10,7 @@ private:
 public:
     construction() = default;
     ~construction() = default;
-    construction(unsigned int hp) : hp(hp) {}
+    explicit construction(unsigned int hp) : hp(hp) {}
 
     friend std::ostream& operator<<(std::ostream &, const construction&);
 };

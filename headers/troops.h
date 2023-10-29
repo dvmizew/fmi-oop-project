@@ -18,10 +18,10 @@ public:
             : hp(hp), damage(damage), training_time(trainingTime), space_occupied(spaceOcuppied),
               damage_type(damageType) {}
 
-    friend std::ostream& operator<< (std::ostream &, troop&);
+    friend std::ostream& operator<< (std::ostream &, const troop&);
 };
 
-std::ostream& operator<<(std::ostream& out, troop &obj) {
+std::ostream& operator<<(std::ostream& out, const troop &obj) {
     out << obj.hp << " HP, " << obj.damage << " damage, " << obj.training_time
         << " training time, and occupies " << obj.space_occupied << " spaces\n";
     if (obj.damage_type)

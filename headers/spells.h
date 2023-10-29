@@ -13,10 +13,10 @@ public:
     // copy constructor
     spell(const spell &obj): brew_time{obj.brew_time}, space_occupied{obj.brew_time} {}
     ~spell() = default;
-    friend std::ostream& operator<<(std::ostream &, spell&);
+    friend std::ostream& operator<<(std::ostream &, const spell&);
 };
 
-std::ostream &operator<<(std::ostream &out, spell &obj) {
+std::ostream &operator<<(std::ostream &out, const spell &obj) {
     out << obj.brew_time << " brewing time and occupies " << obj.space_occupied;
     return out;
 }
