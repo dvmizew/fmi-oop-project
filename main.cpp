@@ -3,7 +3,7 @@
 
 int main() {
     // Main menu
-    player gamer;
+    player gamer = player(0, 0, 0, 0, 0, "Gamer", {}, {});
     unsigned int choice;
     do {
         std::cout << "Main menu\n\n";
@@ -13,7 +13,7 @@ int main() {
         std::cout << "2. Look for battle\n";
         std::cout << "3. Check your current stats\n";
         std::cout << "Your choice: ";
-        std::cin >> choice; // Get the user's choice
+        std::cin >> choice;
 
         switch (choice) {
             case 0:
@@ -23,7 +23,7 @@ int main() {
                 gamer.viewCurrentArmy();
                 break;
             case 2:
-                gamer.lookForBattle();
+                player::lookForBattle();
                 break;
             case 3:
                 std::cout << gamer;

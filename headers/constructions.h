@@ -7,16 +7,12 @@
 #include <queue>
 #include "troops.h"
 
-
 class construction {
 private:
     unsigned int hp{};
-
 public:
-    construction() = default;
-    ~construction() = default;
     explicit construction(unsigned int hp) : hp(hp) {}
-
+    ~construction() = default;
     friend std::ostream& operator<<(std::ostream &, const construction&);
 };
 
@@ -31,11 +27,9 @@ private:
     std::vector<troop> available_troops{};
     std::queue<troop> troops_in_queue{};
 public:
-    barracks() = default;
-    ~barracks() = default;
     barracks(unsigned int hp, unsigned int trainingRate, std::vector<troop> availableTroops, std::queue<troop> troopsInQueue)
             : construction(hp), training_rate(trainingRate), available_troops(std::move(availableTroops)), troops_in_queue(std::move(troopsInQueue)) {}
-
+    ~barracks() = default;
     friend std::ostream& operator<<(std::ostream &, const barracks&);
 };
 

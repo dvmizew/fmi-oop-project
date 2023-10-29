@@ -11,13 +11,13 @@ private:
     bool damage_type{};
     std::string name;
 public:
-    troop() = default;
-    ~troop() = default;
     troop(unsigned int hp, unsigned int damage, unsigned int trainingTime, unsigned int spaceOcuppied, bool damageType, unsigned int elixir_cost, std::string name)
             : hp(hp), damage(damage), training_time(trainingTime), space_occupied(spaceOcuppied),
               elixir_cost(elixir_cost), damage_type(damageType), name(std::move(name)) {
         std::cout << "Troop created!\n";
     }
+    ~troop() = default;
+
     friend std::ostream& operator<< (std::ostream &, const troop&);
 
     void attack() {

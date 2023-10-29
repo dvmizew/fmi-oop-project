@@ -19,17 +19,22 @@ private:
     std::vector<spell> spells{};
 
 public:
+    player(unsigned int xp, unsigned int rank, unsigned int available_troops, unsigned int available_spells,
+           unsigned int town_hall_level, std::string name, std::vector<troop> troops, std::vector<spell> spells)
+            : xp(xp), rank(rank), available_troops(available_troops),
+              available_spells(available_spells), town_hall_level(town_hall_level),
+              name(std::move(name)), troops(std::move(troops)), spells(std::move(spells)) {}
+    ~player() = default;
+
     void viewCurrentArmy() {
         std::cout << "This is your army chief!\n";
         std::cout << "Troops: ";
-        // to be added
-        for (auto i : troops) {
-
+        for (const auto& i : troops) {
+            std::cout << i << '\n';
         }
         std::cout << "\nSpells: ";
-        // to be added
-        for (auto i : spells) {
-
+        for (const auto& i : spells) {
+            std::cout << i << '\n';
         }
     }
     // to be added
