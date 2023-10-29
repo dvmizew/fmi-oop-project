@@ -27,17 +27,21 @@ std::ostream &operator<<(std::ostream &out, const construction &obj) {
 
 class barracks : construction {
 private:
-    unsigned int training_rate;
-    std::vector<troop> available_troops;
-    std::queue<troop> troops_in_queue;
+    unsigned int training_rate{};
+    std::vector<troop> available_troops{};
+    std::queue<troop> troops_in_queue{};
+public:
+    barracks() = default;
+    ~barracks() = default;
+    barracks(unsigned int hp, unsigned int trainingRate, std::vector<troop> availableTroops, std::queue<troop> troopsInQueue)
+            : construction(hp), training_rate(trainingRate), available_troops(std::move(availableTroops)), troops_in_queue(std::move(troopsInQueue)) {}
+
+    friend std::ostream& operator<<(std::ostream &, const barracks&);
 };
 
-class wall : construction {
-
-};
-
-class town_hall : construction {
-
-};
+std::ostream &operator<<(std::ostream &out, const barracks &obj) {
+    out << obj.training_rate << " training rate and it has " << obj.available_troops.size() << " available troops\n";
+    return out;
+}
 
 #endif //OOP_CONSTRUCTIONS_H

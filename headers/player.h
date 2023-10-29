@@ -15,23 +15,25 @@ class player {
 private:
     unsigned int xp{}, rank{}, available_troops{}, available_spells{}, town_hall_level{};
     std::string name{};
-    std::vector<troop> troops;
-    std::vector<spell> spells;
+    std::vector<troop> troops{};
+    std::vector<spell> spells{};
 
 public:
     void viewCurrentArmy() {
         std::cout << "This is your army chief!\n";
         std::cout << "Troops: ";
+        // to be added
         for (auto i : troops) {
 
         }
         std::cout << "\nSpells: ";
+        // to be added
         for (auto i : spells) {
 
         }
     }
-
-    void lookForBattle() {
+    // to be added
+    static void lookForBattle() {
         std::cout << "To the battle!\n";
     }
 
