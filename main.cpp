@@ -1,9 +1,37 @@
 #include <iostream>
-#include "headers/constructions.h"
-#include "headers/spells.h"
-#include "headers/troops.h"
+#include "headers/player.h"
 
 int main() {
-    std::cout << "Hello, world!\n";
+    // Main menu
+    player gamer;
+    unsigned int choice;
+    do {
+        std::cout << "Main menu\n\n";
+        std::cout << "Press the key for the desired option and press ENTER:\n";
+        std::cout << "0. EXIT\n";
+        std::cout << "1. View the current army\n";
+        std::cout << "2. Look for battle\n";
+        std::cout << "3. Check your current stats\n";
+        std::cout << "Your choice: ";
+        std::cin >> choice; // Get the user's choice
+
+        switch (choice) {
+            case 0:
+                std::cout << "Exiting the program.\n";
+                break;
+            case 1:
+                gamer.viewCurrentArmy();
+                break;
+            case 2:
+                gamer.lookForBattle();
+                break;
+            case 3:
+                std::cout << gamer;
+                break;
+            default:
+                std::cout << "Invalid choice. Please try again.\n";
+        }
+    } while (choice != 0);
+
     return 0;
 }

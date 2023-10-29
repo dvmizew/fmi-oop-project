@@ -93,7 +93,8 @@ endfunction()
 add_executable(${PROJECT_NAME} main.cpp
         headers/constructions.h
         headers/troops.h
-        headers/spells.h)
+        headers/spells.h
+        headers/player.h)
 
 ###############################################################################
 

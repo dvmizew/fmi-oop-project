@@ -1,0 +1,6 @@
+In meniul principal al jocului, utilizatorul poate alege una dintre urmatoarele optiuni:
+
+0 - Iesirea din joc
+1 - Afisarea armatei curente
+2 - Cautarea de lupte
+3 - Afisarea statisticilor curente ale jucatorului

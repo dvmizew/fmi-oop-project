@@ -14,6 +14,12 @@ public:
     spell(const spell &obj): brew_time{obj.brew_time}, space_occupied{obj.brew_time} {}
     ~spell() = default;
     friend std::ostream& operator<<(std::ostream &, const spell&);
+    // operator= de copiere
+    spell& operator=(const spell& obj) {
+        brew_time = obj.brew_time;
+        space_occupied = obj.brew_time;
+        return *this;
+    }
 };
 
 std::ostream &operator<<(std::ostream &out, const spell &obj) {
