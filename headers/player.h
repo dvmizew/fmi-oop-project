@@ -24,6 +24,17 @@ public:
             : xp(xp), rank(rank), available_troops(available_troops),
               available_spells(available_spells), town_hall_level(town_hall_level),
               name(std::move(name)), troops(std::move(troops)), spells(std::move(spells)) {}
+              // copy constructor
+              player(const player& obj) {
+                    xp = obj.xp;
+                    rank = obj.rank;
+                    available_troops = obj.available_troops;
+                    available_spells = obj.available_spells;
+                    town_hall_level = obj.town_hall_level;
+                    name = obj.name;
+                    troops = obj.troops;
+                    spells = obj.spells;
+    }
     ~player() = default;
 
     void viewCurrentArmy() {
@@ -47,9 +58,9 @@ public:
 
 std::ostream& operator<<(std::ostream &out, const player& obj) {
     out << "Town Hall level is :" << obj.town_hall_level;
-    out << "Name: " << obj.name;
-    out << obj.xp << " XP " << obj.rank << " rank";
-    out << "It unlocked " << obj.available_troops << " troops and " << obj.available_spells << " spells\n";
+    out << "\nName: " << obj.name << '\n';
+    out << obj.xp << " XP\n" << obj.rank << " rank\n";
+    out << "It unlocked " << obj.available_troops << " troops and " << obj.available_spells << " spells\n\n";
     return out;
 }
 

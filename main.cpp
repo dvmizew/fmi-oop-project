@@ -1,10 +1,12 @@
 #include <iostream>
+#include <vector>
 #include "headers/player.h"
 
 int main() {
     // Main menu
-    player gamer = player(0, 0, 0, 0, 0, "Gamer", {}, {});
-    unsigned int choice;
+    player main_player = player(0, 0, 0, 0, 0, "You", {}, {});
+    std::vector<player> players{};
+    unsigned int choice{};
     do {
         std::cout << "Main menu\n\n";
         std::cout << "Press the key for the desired option and press ENTER:\n";
@@ -20,13 +22,13 @@ int main() {
                 std::cout << "Exiting the program.\n";
                 break;
             case 1:
-                gamer.viewCurrentArmy();
+                main_player.viewCurrentArmy();
                 break;
             case 2:
                 player::lookForBattle();
                 break;
             case 3:
-                std::cout << gamer;
+                std::cout << main_player;
                 break;
             default:
                 std::cout << "Invalid choice. Please try again.\n";
