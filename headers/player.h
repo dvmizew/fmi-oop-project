@@ -24,17 +24,6 @@ public:
             : xp(xp), rank(rank), available_troops(available_troops),
               available_spells(available_spells), town_hall_level(town_hall_level),
               name(std::move(name)), troops(std::move(troops)), spells(std::move(spells)) {}
-              // copy constructor
-              player(const player& obj) {
-                    xp = obj.xp;
-                    rank = obj.rank;
-                    available_troops = obj.available_troops;
-                    available_spells = obj.available_spells;
-                    town_hall_level = obj.town_hall_level;
-                    name = obj.name;
-                    troops = obj.troops;
-                    spells = obj.spells;
-    }
     ~player() = default;
 
     void viewCurrentArmy() {
