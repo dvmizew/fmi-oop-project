@@ -12,6 +12,7 @@ private:
     bool damageType{};
     std::string name;
 public:
+    // init constructor
     troop(unsigned int hp, unsigned int damage, unsigned int trainingTime, unsigned int spaceOcuppied, bool damageType,
           unsigned int elixirCost, std::string name)
             : hp(hp), damage(damage), trainingTime(trainingTime), spaceOccupied(spaceOcuppied),
@@ -23,6 +24,8 @@ public:
 
     friend std::ostream &operator<<(std::ostream &, const troop &);
 
+    // default functions for the troop
+    // to be added
     void attack() {
         std::cout << "Attacking...\n";
     }

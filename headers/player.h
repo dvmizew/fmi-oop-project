@@ -16,18 +16,21 @@ class player {
 private:
     unsigned int xp{}, rank{}, availableTroops{}, availableSpells{}, townHallLevel{};
     std::string name{};
-    std::vector<troop> troops{};
-    std::vector<spell> spells{};
+    std::vector<troop> troops{}; // the player's army
+    std::vector<spell> spells{}; // the player's spells
 
 public:
+    // init constructor
     player(unsigned int xp, unsigned int rank, unsigned int availableTroops, unsigned int availableSpells,
            unsigned int townHallLevel, std::string name, std::vector<troop> troops, std::vector<spell> spells)
             : xp(xp), rank(rank), availableTroops(availableTroops),
               availableSpells(availableSpells), townHallLevel(townHallLevel),
               name(std::move(name)), troops(std::move(troops)), spells(std::move(spells)) {}
 
+    // destructor
     ~player() = default;
 
+    // this function shows the current army of the player
     void viewCurrentArmy() {
         std::cout << "This is your army chief!\n";
         std::cout << "Troops: ";
@@ -48,6 +51,7 @@ public:
     friend std::ostream &operator<<(std::ostream &, const player &);
 };
 
+// definition of the overloaded operator<< for showing in console the player's stats
 std::ostream &operator<<(std::ostream &out, const player &obj) {
     out << "Town Hall level is :" << obj.townHallLevel;
     out << "\nName: " << obj.name << '\n';
