@@ -1,8 +1,9 @@
 //
 // Created by radud on 28.10.2023.
 //
-#ifndef OOP_CONSTRUCTIONS_H
-#define OOP_CONSTRUCTIONS_H
+#ifndef OOP_CONSTRUCTION_H
+#define OOP_CONSTRUCTION_H
+
 #include <vector>
 #include <queue>
 #include "troop.h"
@@ -11,31 +12,43 @@ class construction {
 private:
     unsigned int hp{};
 public:
+    // init constructor
     explicit construction(unsigned int hp) : hp(hp) {}
+
+    // destructor
     ~construction() = default;
-    friend std::ostream& operator<<(std::ostream &, const construction&);
+
+    friend std::ostream &operator<<(std::ostream &, const construction &);
 };
 
+// definition of the overloaded operator<<
 std::ostream &operator<<(std::ostream &out, const construction &obj) {
     out << obj.hp << " HP";
     return out;
 }
 
+// class for the barracks construction
 class barracks : construction {
 private:
-    unsigned int training_rate{};
-    std::vector<troop> available_troops{};
-    std::queue<troop> troops_in_queue{};
+    unsigned int trainingRate{};
+    std::vector<troop> availableTroops{};
+    std::queue<troop> troopsInQueue{};
 public:
-    barracks(unsigned int hp, unsigned int trainingRate, std::vector<troop> availableTroops, std::queue<troop> troopsInQueue)
-            : construction(hp), training_rate(trainingRate), available_troops(std::move(availableTroops)), troops_in_queue(std::move(troopsInQueue)) {}
+    barracks(unsigned int hp, unsigned int trainingRate, std::vector<troop> availableTroops,
+             std::queue<troop> troopsInQueue)
+            : construction(hp), trainingRate(trainingRate), availableTroops(std::move(availableTroops)),
+              troopsInQueue(std::move(troopsInQueue)) {}
+
     ~barracks() = default;
-    friend std::ostream& operator<<(std::ostream &, const barracks&);
+
+    // friend function for overloading <<
+    friend std::ostream &operator<<(std::ostream &, const barracks &);
 };
 
+// definition of the overloaded operator<<
 std::ostream &operator<<(std::ostream &out, const barracks &obj) {
-    out << obj.training_rate << " training rate and it has " << obj.available_troops.size() << " available troops\n";
+    out << obj.trainingRate << " training rate and it has " << obj.availableTroops.size() << " available troops\n";
     return out;
 }
 
-#endif //OOP_CONSTRUCTIONS_H
+#endif //OOP_CONSTRUCTION_H

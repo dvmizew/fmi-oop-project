@@ -4,8 +4,9 @@
 
 int main() {
     // Main menu
-    player main_player = player(0, 0, 0, 0, 0, "You", {}, {});
+    player mainPlayer = player(0, 0, 0, 0, 0, "You", {}, {});
     std::vector<player> players{};
+    // a "infinitely" running loop for the main menu
     unsigned int choice{};
     do {
         std::cout << "Main menu\n\n";
@@ -16,19 +17,18 @@ int main() {
         std::cout << "3. Check your current stats\n";
         std::cout << "Your choice: ";
         std::cin >> choice;
-
         switch (choice) {
             case 0:
                 std::cout << "Exiting the program.\n";
                 break;
             case 1:
-                main_player.viewCurrentArmy();
+                mainPlayer.viewCurrentArmy();
                 break;
             case 2:
                 player::lookForBattle();
                 break;
             case 3:
-                std::cout << main_player;
+                std::cout << mainPlayer;
                 break;
             default:
                 std::cout << "Invalid choice. Please try again.\n";
