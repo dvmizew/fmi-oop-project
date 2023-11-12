@@ -14,9 +14,9 @@ private:
 public:
     // init constructor
     troop(unsigned int hp, unsigned int damage, unsigned int trainingTime, unsigned int spaceOcuppied, bool damageType,
-          unsigned int elixirCost, std::string name)
+          unsigned int elixirCost, std::string& name)
             : hp(hp), damage(damage), trainingTime(trainingTime), spaceOccupied(spaceOcuppied),
-              elixirCost(elixirCost), damageType(damageType), name(std::move(name)) {
+              elixirCost(elixirCost), damageType(damageType), name(name) {
         std::cout << "Troop created!\n";
     }
 

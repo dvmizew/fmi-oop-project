@@ -22,10 +22,10 @@ private:
 public:
     // init constructor
     player(unsigned int xp, unsigned int rank, unsigned int availableTroops, unsigned int availableSpells,
-           unsigned int townHallLevel, std::string name, std::vector<troop> troops, std::vector<spell> spells)
+           unsigned int townHallLevel, const std::string& name, const std::vector<troop>& troops, const std::vector<spell>& spells)
             : xp(xp), rank(rank), availableTroops(availableTroops),
               availableSpells(availableSpells), townHallLevel(townHallLevel),
-              name(std::move(name)), troops(std::move(troops)), spells(std::move(spells)) {}
+              name(name), troops(troops), spells(spells) {}
 
     // destructor
     ~player() = default;
