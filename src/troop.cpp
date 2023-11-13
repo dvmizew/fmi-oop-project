@@ -1,0 +1,28 @@
+//
+// Created by radud on 13.11.2023.
+//
+
+#include "../headers/troop.hpp"
+
+std::ostream &operator<<(std::ostream &out, const troop &obj) {
+    out << obj.hp << " HP, " << obj.damage << " damage, " << obj.trainingTime
+        << " training time, and occupies " << obj.spaceOccupied << " spaces and it costs " << obj.elixirCost;
+    if (obj.damageType)
+        out << "Melee damage\n";
+    else
+        out << "Ranged damage\n";
+    return out;
+}
+
+void troop::attack() {
+    std::cout << "Attacking...\n";
+}
+
+void troop::train() {
+    std::cout << "Training...\n";
+}
+
+void troop::die() {
+    std::cout << "This troop is dead!\n";
+    hp = 0;
+}

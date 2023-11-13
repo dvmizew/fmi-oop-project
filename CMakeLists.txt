@@ -91,10 +91,15 @@ endfunction()
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME} main.cpp
-        headers/construction.h
-        headers/troop.h
-        headers/spell.h
-        headers/player.h)
+        headers/construction.hpp
+        headers/troop.hpp
+        headers/spell.hpp
+        headers/player.hpp
+        src/construction.cpp
+        src/player.cpp
+        src/spell.cpp
+        src/troop.cpp
+)
 
 ###############################################################################
 

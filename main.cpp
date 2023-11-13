@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "headers/player.h"
+#include "headers/player.hpp"
 
 int main() {
     // Main menu

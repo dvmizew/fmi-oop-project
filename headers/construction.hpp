@@ -1,12 +1,12 @@
 //
 // Created by radud on 28.10.2023.
 //
-#ifndef OOP_CONSTRUCTION_H
-#define OOP_CONSTRUCTION_H
+#ifndef OOP_CONSTRUCTION_HPP
+#define OOP_CONSTRUCTION_HPP
 
 #include <vector>
 #include <queue>
-#include "troop.h"
+#include "troop.hpp"
 
 class construction {
 private:
@@ -21,11 +21,8 @@ public:
     friend std::ostream &operator<<(std::ostream &, const construction &);
 };
 
-// definition of the overloaded operator<<
-std::ostream &operator<<(std::ostream &out, const construction &obj) {
-    out << obj.hp << " HP";
-    return out;
-}
+// prototype of the overloaded operator<< for construction class
+std::ostream &operator<<(std::ostream &out, const construction &obj);
 
 // class for the barracks construction
 class barracks : construction {
@@ -45,10 +42,7 @@ public:
     friend std::ostream &operator<<(std::ostream &, const barracks &);
 };
 
-// definition of the overloaded operator<<
-std::ostream &operator<<(std::ostream &out, const barracks &obj) {
-    out << obj.trainingRate << " training rate and it has " << obj.availableTroops.size() << " available troops\n";
-    return out;
-}
+// prototype of the overloaded operator<< for barracks class
+std::ostream &operator<<(std::ostream &out, const barracks &obj);
 
-#endif //OOP_CONSTRUCTION_H
+#endif //OOP_CONSTRUCTION_HPP

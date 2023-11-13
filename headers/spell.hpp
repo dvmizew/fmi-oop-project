@@ -1,8 +1,10 @@
 //
 // Created by radud on 28.10.2023.
 //
-#ifndef OOP_SPELL_H
-#define OOP_SPELL_H
+#ifndef OOP_SPELL_HPP
+#define OOP_SPELL_HPP
+
+#include <ostream>
 
 class spell {
 private:
@@ -29,9 +31,6 @@ public:
 };
 
 // definition of the overloaded operator<<
-std::ostream &operator<<(std::ostream &out, const spell &obj) {
-    out << obj.brewTime << " brewing time and occupies " << obj.spaceOccupied;
-    return out;
-}
+std::ostream &operator<<(std::ostream &out, const spell &obj);
 
-#endif //OOP_SPELL_H
+#endif //OOP_SPELL_HPP
