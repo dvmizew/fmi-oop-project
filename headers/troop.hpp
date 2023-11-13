@@ -26,9 +26,9 @@ public:
     friend std::ostream &operator<<(std::ostream &, const troop &);
 
     // prototypes
-    void attack();
+    static void attack();
 
-    void train();
+    static void train();
 
     void die();
 };
