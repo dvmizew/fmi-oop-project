@@ -14,15 +14,15 @@ std::ostream &operator<<(std::ostream &out, const troop &obj) {
     return out;
 }
 
-void troop::attack() {
+[[maybe_unused]] void troop::attack() {
     std::cout << "Attacking...\n";
 }
 
-void troop::train() {
+[[maybe_unused]] void troop::train() {
     std::cout << "Training...\n";
 }
 
-void troop::die() {
+[[maybe_unused]] void troop::die() {
     std::cout << "This troop is dead!\n";
     hp = 0;
 }

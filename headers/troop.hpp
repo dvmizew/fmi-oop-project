@@ -26,11 +26,11 @@ public:
     friend std::ostream &operator<<(std::ostream &, const troop &);
 
     // prototypes
-    static void attack();
+    [[maybe_unused]] static void attack();
 
-    static void train();
+    [[maybe_unused]] static void train();
 
-    void die();
+    [[maybe_unused]] void die();
 };
 
 std::ostream &operator<<(std::ostream &out, const troop &obj);
