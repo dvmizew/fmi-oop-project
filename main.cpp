@@ -5,6 +5,18 @@
 int main() {
     // Main menu
     player mainPlayer = player(0, 0, 0, 0, 0, "You", {}, {});
+
+    // recruiting some troops for the main player - TEST
+    std::unique_ptr<barbarian> newBarbarian = std::make_unique<barbarian>();
+    std::unique_ptr<archer> newArcher = std::make_unique<archer>();
+    mainPlayer.recruitTroop(std::move(newBarbarian));
+    mainPlayer.recruitTroop(std::move(newArcher));
+    // brewing some spells for the main player - TEST
+    std::unique_ptr<heal> newHealSpell = std::make_unique<heal>();
+    std::unique_ptr<rage> newRageSpell = std::make_unique<rage>();
+    mainPlayer.brewSpell(std::move(newHealSpell));
+    mainPlayer.brewSpell(std::move(newRageSpell));
+
     std::vector<player> players{};
     // a "infinitely" running loop for the main menu
     unsigned int choice{};
