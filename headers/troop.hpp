@@ -21,18 +21,32 @@ public:
         std::cout << "Troop created!\n";
     }
 
-    ~troop() = default;
+    troop() = default;
+    //~troop() = default;
+    virtual ~troop() = default;
 
     friend std::ostream &operator<<(std::ostream &, const troop &);
 
     // prototypes
-    [[maybe_unused]] static void attack();
+    virtual void attack();
 
-    [[maybe_unused]] static void train();
-
-    [[maybe_unused]] void die();
+    virtual void die();
 };
 
 std::ostream &operator<<(std::ostream &out, const troop &obj);
+
+class barbarian : public troop {
+public:
+    void attack() override {
+        std::cout << "Barbarian attacks!\n";
+    }
+};
+
+class archer : public troop {
+public:
+    void attack() override {
+        std::cout << "Archer shoots!\n";
+    }
+};
 
 #endif //OOP_TROOP_HPP
