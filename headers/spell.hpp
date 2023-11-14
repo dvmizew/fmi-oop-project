@@ -16,6 +16,8 @@ public:
     // copy constructor
     spell(const spell &obj) : brewTime{obj.brewTime}, spaceOccupied{obj.brewTime} {}
 
+    //default constructor
+    spell() = default;
     // Destructor
     ~spell() = default;
 
@@ -32,5 +34,14 @@ public:
 
 // definition of the overloaded operator<<
 std::ostream &operator<<(std::ostream &out, const spell &obj);
+
+class heal : public spell {
+public:
+
+};
+
+class rage : public spell {
+
+};
 
 #endif //OOP_SPELL_HPP
