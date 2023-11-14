@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
 #include "troop.hpp"
 #include "spell.hpp"
 #include "construction.hpp"
@@ -16,14 +17,14 @@ class player {
 private:
     unsigned int xp{}, rank{}, availableTroops{}, availableSpells{}, townHallLevel{};
     std::string name{};
-    std::vector<troop> troops{}; // the player's army
-    std::vector<spell> spells{}; // the player's spells
+    std::vector<std::unique_ptr<troop>> troops{}; // the player's army
+    std::vector<std::unique_ptr<spell>> spells{}; // the player's spells
 
 public:
     // init constructor
     player(unsigned int xp, unsigned int rank, unsigned int availableTroops, unsigned int availableSpells,
-           unsigned int townHallLevel, const std::string &name, const std::vector<troop> &troops,
-           const std::vector<spell> &spells)
+           unsigned int townHallLevel, const std::string &name, const std::allocator<std::unique_ptr<troop>>& troops,
+           const std::allocator<std::unique_ptr<spell>>& spells)
             : xp(xp), rank(rank), availableTroops(availableTroops),
               availableSpells(availableSpells), townHallLevel(townHallLevel),
               name(name), troops(troops), spells(spells) {}
@@ -32,6 +33,10 @@ public:
     ~player() = default;
 
     // Prototypes
+    void recruitTroop(std::unique_ptr<troop> newTroop);
+
+    void brewSpell(std::unique_ptr<spell> newSpell);
+
     void viewCurrentArmy();
 
     static void lookForBattle();

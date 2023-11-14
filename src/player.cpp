@@ -12,6 +12,16 @@ std::ostream &operator<<(std::ostream &out, const player &obj) {
     return out;
 }
 
+void player::recruitTroop(std::unique_ptr<troop> newTroop) {
+    troops.push_back(std::move(newTroop));
+    availableTroops++;
+}
+
+void player::brewSpell(std::unique_ptr<spell> newSpell) {
+    spells.push_back(std::move(newSpell));
+    availableSpells++;
+}
+
 void player::lookForBattle() {
     std::cout << "To the battle!\n";
 }
