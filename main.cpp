@@ -11,8 +11,8 @@ int main() {
     barracks mainBarracks = barracks(1000, 1);
     barracks secondBarracks = barracks(1000, 1);
 
-    spellFactory mainSpellFactory = spellFactory(1, 1000);
-    spellFactory secondSpellFactory = spellFactory(1, 1000);
+    spellFactory mainSpellFactory = spellFactory(1000);
+    spellFactory secondSpellFactory = spellFactory( 1000);
 
     // testing the attack method
     mainPlayer.attackEnemyTroop(secondPlayer, 0, 0);

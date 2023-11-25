@@ -40,23 +40,19 @@ public:
 
     ~barracks() = default;
 
-    //void trainTroop(std::unique_ptr<troop> newTroop);
-
     // friend function for overloading <<
     friend std::ostream &operator<<(std::ostream &, const barracks &);
 };
 
 class spellFactory : public construction {
 private:
-    unsigned int brewingRate{};
+    //unsigned int brewingRate{};
     std::vector<std::unique_ptr<spell>> availableSpells{};
     std::queue<std::unique_ptr<spell>> spellsInQueue{};
 public:
-    explicit spellFactory(unsigned int brewingRate, unsigned int hp) : construction(hp), brewingRate(brewingRate) {}
+    explicit spellFactory(unsigned int hp) : construction(hp) {}
 
     ~spellFactory() = default;
-
-    //void brewSpell(std::unique_ptr<spell> spell);
 };
 
 // prototype of the overloaded operator<< for barracks class

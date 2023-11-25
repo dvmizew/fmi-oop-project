@@ -27,7 +27,6 @@ public:
 
     troop() = default;
 
-    //~troop() = default;
     virtual ~troop() = default;
 
     troop &operator=(const troop &other);
