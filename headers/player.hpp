@@ -26,19 +26,14 @@ public:
     player(unsigned int _xp, std::string _name);
 
     // destructor
-    ~player() {
-        for (auto &i: troops)
-            i.reset();
-
-        troops.clear();
-        for (auto &i: spells)
-            i.reset();
-
-        spells.clear();
-    }
+    ~player() = default;
 
     // Prototypes
     void viewCurrentArmy();
+
+    void addTroop(std::unique_ptr<troop> troop);
+
+    void addSpell(std::unique_ptr<spell> spell);
 
     void attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
 

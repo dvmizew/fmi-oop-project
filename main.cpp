@@ -14,6 +14,30 @@ int main() {
     spellFactory mainSpellFactory = spellFactory(1000);
     spellFactory secondSpellFactory = spellFactory( 1000);
 
+    std::unique_ptr<troop> newBarbarian = std::make_unique<barbarian>();
+    std::unique_ptr<troop> newArcher = std::make_unique<archer>();
+    std::unique_ptr<troop> newGiant = std::make_unique<giant>();
+    mainPlayer.addTroop(std::move(newBarbarian));
+    mainPlayer.addTroop(std::move(newArcher));
+    mainPlayer.addTroop(std::move(newGiant));
+
+    std::unique_ptr<spell> newRage = std::make_unique<rage>();
+    std::unique_ptr<spell> newHeal = std::make_unique<heal>();
+    mainPlayer.addSpell(std::move(newRage));
+    mainPlayer.addSpell(std::move(newHeal));
+
+    std::unique_ptr<troop> newBarbarian2 = std::make_unique<barbarian>();
+    std::unique_ptr<troop> newArcher2 = std::make_unique<archer>();
+    std::unique_ptr<troop> newGiant2 = std::make_unique<giant>();
+    secondPlayer.addTroop(std::move(newBarbarian2));
+    secondPlayer.addTroop(std::move(newArcher2));
+    secondPlayer.addTroop(std::move(newGiant2));
+
+    std::unique_ptr<spell> newRage2 = std::make_unique<rage>();
+    std::unique_ptr<spell> newHeal2 = std::make_unique<heal>();
+    secondPlayer.addSpell(std::move(newRage2));
+    secondPlayer.addSpell(std::move(newHeal2));
+
     // testing the attack method
     mainPlayer.attackEnemyTroop(secondPlayer, 0, 0);
     mainPlayer.attackEnemyTroop(secondPlayer, 1, 0);

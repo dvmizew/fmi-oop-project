@@ -3,15 +3,16 @@
 //
 
 #include <utility>
+#include "../headers/custom_exceptions.h"
 #include "../headers/player.hpp"
 
 player::player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {
-    troops.emplace_back(std::make_unique<barbarian>());
-    troops.emplace_back(std::make_unique<archer>());
-    troops.emplace_back(std::make_unique<giant>());
-
-    spells.emplace_back(std::make_unique<rage>());
-    spells.emplace_back(std::make_unique<heal>());
+//    troops.emplace_back(std::make_unique<barbarian>());
+//    troops.emplace_back(std::make_unique<archer>());
+//    troops.emplace_back(std::make_unique<giant>());
+//
+//    spells.emplace_back(std::make_unique<rage>());
+//    spells.emplace_back(std::make_unique<heal>());
 }
 
 std::ostream &operator<<(std::ostream &out, const player &obj) {
@@ -40,6 +41,17 @@ void player::viewCurrentArmy() {
 }
 
 void player::attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex) {
+    if (troopIndex >= troops.size() || enemyTroopIndex >= enemyPlayer.troops.size()) {
+        throw InvalidIndexException();
+    }
+
+    auto &currentTroop = troops[troopIndex];
+    auto &enemyTroop = enemyPlayer.troops[enemyTroopIndex];
+
+    if (!currentTroop || !enemyTroop) {
+        throw NullPointerException();
+    }
+
     troops[troopIndex]->attack(*enemyPlayer.troops[enemyTroopIndex]);
 }
 
@@ -53,4 +65,12 @@ player &player::operator=(const player &obj) {
         this->name = obj.name;
     }
     return *this;
+}
+
+void player::addTroop(std::unique_ptr<troop> troop) {
+    troops.emplace_back(std::move(troop));
+}
+
+void player::addSpell(std::unique_ptr<spell> spell) {
+    spells.emplace_back(std::move(spell));
 }

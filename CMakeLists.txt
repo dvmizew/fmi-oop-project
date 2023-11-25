@@ -99,6 +99,7 @@ add_executable(${PROJECT_NAME} main.cpp
         src/player.cpp
         src/spell.cpp
         src/troop.cpp
+        headers/custom_exceptions.h
 )
 
 ###############################################################################
