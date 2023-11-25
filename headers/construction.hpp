@@ -18,7 +18,7 @@ public:
     // destructor
     ~construction() = default;
 
-    construction& operator=(const construction& obj);
+    construction &operator=(const construction &obj);
 
     friend std::ostream &operator<<(std::ostream &, const construction &);
 };

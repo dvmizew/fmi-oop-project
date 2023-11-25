@@ -30,7 +30,7 @@ public:
     //~troop() = default;
     virtual ~troop() = default;
 
-    troop& operator=(const troop& other);
+    troop &operator=(const troop &other);
 
     friend std::ostream &operator<<(std::ostream &, const troop &);
 
