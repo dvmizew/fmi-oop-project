@@ -21,7 +21,7 @@ int main() {
     mainPlayer.brewSpell(std::move(newRageSpell));
 
     // Second player
-    player secondPlayer = player(0,0,0,0,0,"Alfred", {}, {});
+    player secondPlayer = player(0, 0, 0, 0, 0, "Alfred", {}, {});
     std::unique_ptr<troop> newSecondBarbarian = std::make_unique<barbarian>();
     std::unique_ptr<troop> newSecondArcher = std::make_unique<archer>();
     std::unique_ptr<troop> newSecondGiant = std::make_unique<giant>();

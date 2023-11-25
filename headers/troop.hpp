@@ -31,7 +31,7 @@ public:
     void decreaseHP(unsigned int amount);
 
     // prototypes for virtual pure functions
-    virtual void attack(troop& enemyTroop) = 0;
+    virtual void attack(troop &enemyTroop) = 0;
 
     virtual void die() = 0;
 };
@@ -40,19 +40,22 @@ std::ostream &operator<<(std::ostream &out, const troop &obj);
 
 class barbarian : public troop {
 public:
-    void attack(troop& enemyTroop) override;
+    void attack(troop &enemyTroop) override;
+
     void die() override;
 };
 
 class archer : public troop {
 public:
-    void attack(troop& enemyTroop) override;
+    void attack(troop &enemyTroop) override;
+
     void die() override;
 };
 
 class giant : public troop {
 public:
-    void attack(troop& enemyTroop) override;
+    void attack(troop &enemyTroop) override;
+
     void die() override;
 };
 
