@@ -23,23 +23,23 @@ void troop::decreaseHP(unsigned int amount) {
     hp -= amount;
 }
 
-void troop::attack(troop& enemyTroop) {
+void troop::attack(troop &enemyTroop) {
     std::cout << "Attacking...\n";
     if (enemyTroop.hp > 0) {
         enemyTroop.decreaseHP(BASE_DAMAGE);
     }
-    if (hp <= 0) {
+    if (hp == 0) {
         enemyTroop.die();
     }
 }
 
 void troop::die() {
     if (this->hp == 0)
-            std::cout << "This troop is dead!\n";
+        std::cout << "This troop is dead!\n";
 }
 
 // Implementation for virtual pure functions of derived classes
-void barbarian::attack(troop& enemyTroop) {
+void barbarian::attack(troop &enemyTroop) {
     std::cout << "Barbarian attacks!\n";
     enemyTroop.decreaseHP(BASE_DAMAGE_BARB);
 }
@@ -48,7 +48,7 @@ void barbarian::die() {
     std::cout << "Here I come, Valhalla\n";
 }
 
-void archer::attack(troop& enemyTroop) {
+void archer::attack(troop &enemyTroop) {
     std::cout << "Archer attacks!\n";
     enemyTroop.decreaseHP(BASE_DAMAGE_ARCH);
 }
@@ -57,7 +57,7 @@ void archer::die() {
     std::cout << "\n";
 }
 
-void giant::attack(troop& enemyTroop) {
+void giant::attack(troop &enemyTroop) {
     std::cout << "Giant attacks!\n";
     enemyTroop.decreaseHP(BASE_DAMAGE_GIANT);
 }
