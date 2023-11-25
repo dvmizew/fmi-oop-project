@@ -3,8 +3,6 @@
 //
 
 #include "../headers/construction.hpp"
-#define BARRACKS_MAX_CAPACITY 20
-#define SPELL_FACTORY_MAX_CAPACITY 10
 
 // overloaded << operator for construction class
 std::ostream &operator<<(std::ostream &out, const construction &obj) {
@@ -25,18 +23,18 @@ std::ostream &operator<<(std::ostream &out, const barracks &obj) {
     return out;
 }
 
-void barracks::trainTroop(std::unique_ptr<troop> newTroop) {
-    if (availableTroops.size() < BARRACKS_MAX_CAPACITY)
-        availableTroops.push_back(std::move(newTroop));
-    else {
-        std::cout << "The barracks is full. Please wait for a newTroop to be trained.\n";
-    }
-}
-
-void spellFactory::brewSpell(std::unique_ptr<spell> newSpell) {
-    if (availableSpells.size() < SPELL_FACTORY_MAX_CAPACITY)
-        availableSpells.push_back(std::move(newSpell));
-    else {
-        std::cout << "The spell factory is full. Please wait for a spell to be brewed.\n";
-    }
-}
+//void barracks::trainTroop(std::unique_ptr<troop> newTroop) {
+//    if (availableTroops.size() < BARRACKS_MAX_CAPACITY)
+//        availableTroops.push_back(std::move(newTroop));
+//    else {
+//        std::cout << "The barracks is full. Please wait for a newTroop to be trained.\n";
+//    }
+//}
+//
+//void spellFactory::brewSpell(std::unique_ptr<spell> newSpell) {
+//    if (availableSpells.size() < SPELL_FACTORY_MAX_CAPACITY)
+//        availableSpells.push_back(std::move(newSpell));
+//    else {
+//        std::cout << "The spell factory is full. Please wait for a spell to be brewed.\n";
+//    }
+//}

@@ -40,7 +40,7 @@ public:
 
     ~barracks() = default;
 
-    void trainTroop(std::unique_ptr<troop> newTroop);
+    //void trainTroop(std::unique_ptr<troop> newTroop);
 
     // friend function for overloading <<
     friend std::ostream &operator<<(std::ostream &, const barracks &);
@@ -56,7 +56,7 @@ public:
 
     ~spellFactory() = default;
 
-    void brewSpell(std::unique_ptr<spell> spell);
+    //void brewSpell(std::unique_ptr<spell> spell);
 };
 
 // prototype of the overloaded operator<< for barracks class

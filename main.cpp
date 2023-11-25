@@ -8,6 +8,12 @@ int main() {
     player mainPlayer = player(0, "You");
     player secondPlayer = player(0, "Alfred");
 
+    barracks mainBarracks = barracks(1000, 1);
+    barracks secondBarracks = barracks(1000, 1);
+
+    spellFactory mainSpellFactory = spellFactory(1, 1000);
+    spellFactory secondSpellFactory = spellFactory(1, 1000);
+
     // testing the attack method
     mainPlayer.attackEnemyTroop(secondPlayer, 0, 0);
     mainPlayer.attackEnemyTroop(secondPlayer, 1, 0);

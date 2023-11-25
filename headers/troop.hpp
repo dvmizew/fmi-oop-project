@@ -50,6 +50,8 @@ public:
         std::cout << "Barbarian created!\n";
     }
 
+    ~barbarian() override = default;
+
     void attack(troop &enemyTroop) override;
 
     void die() override;
@@ -61,6 +63,8 @@ public:
         std::cout << "Archer created!\n";
     }
 
+    ~archer() override = default;
+
     void attack(troop &enemyTroop) override;
 
     void die() override;
@@ -71,6 +75,8 @@ public:
     giant() : troop(200, BASE_DAMAGE_GIANT, 0, 5, true, 500) {
         std::cout << "Giant created!\n";
     }
+
+    ~giant() override = default;
 
     void attack(troop &enemyTroop) override;
 

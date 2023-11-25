@@ -8,6 +8,7 @@
 player::player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {
     troops.emplace_back(std::make_unique<barbarian>());
     troops.emplace_back(std::make_unique<archer>());
+    troops.emplace_back(std::make_unique<giant>());
 
     spells.emplace_back(std::make_unique<rage>());
     spells.emplace_back(std::make_unique<heal>());
