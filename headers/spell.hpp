@@ -35,6 +35,8 @@ private:
 public:
     heal(unsigned int brewTime, unsigned int spaceOccupied, unsigned int healingAmount)
             : spell(brewTime, spaceOccupied), healingAmount(healingAmount) {}
+
+    virtual ~heal() = default;
 };
 
 class rage : public spell {
@@ -43,6 +45,8 @@ private:
 public:
     rage(unsigned int brewTime, unsigned int spaceOccupied, float damageMultiplier)
             : spell(brewTime, spaceOccupied), damageMultiplier(damageMultiplier) {}
+
+    virtual ~rage() = default;
 };
 
 #endif //OOP_SPELL_HPP
