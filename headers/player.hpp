@@ -39,6 +39,8 @@ public:
 
     void viewCurrentArmy();
 
+    void attackEnemyTroop(player& enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
+
     static void lookForBattle();
 
     friend std::ostream &operator<<(std::ostream &, const player &);
