@@ -45,8 +45,8 @@ void player::attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex
         throw InvalidIndexException();
     }
 
-    auto &currentTroop = troops[troopIndex];
-    auto &enemyTroop = enemyPlayer.troops[enemyTroopIndex];
+    const auto &currentTroop = troops[troopIndex];
+    const auto &enemyTroop = enemyPlayer.troops[enemyTroopIndex];
 
     if (!currentTroop || !enemyTroop) {
         throw NullPointerException();
