@@ -14,10 +14,8 @@ public:
     spell(unsigned int brewTime, unsigned int spaceOccupied) : brewTime(brewTime), spaceOccupied(spaceOccupied) {}
 
     // copy constructor
-    spell(const spell &obj) : brewTime{obj.brewTime}, spaceOccupied{obj.brewTime} {}
+    spell(const spell &obj) : brewTime{obj.brewTime}, spaceOccupied{obj.spaceOccupied} {}
 
-    //default constructor
-    spell() = default;
     // Destructor
     ~spell() = default;
 
@@ -32,12 +30,19 @@ public:
 std::ostream &operator<<(std::ostream &out, const spell &obj);
 
 class heal : public spell {
+private:
+    unsigned int healingAmount{};
 public:
-
+    heal(unsigned int brewTime, unsigned int spaceOccupied, unsigned int healingAmount)
+            : spell(brewTime, spaceOccupied), healingAmount(healingAmount) {}
 };
 
 class rage : public spell {
-
+private:
+    float damageMultiplier{};
+public:
+    rage(unsigned int brewTime, unsigned int spaceOccupied, float damageMultiplier)
+            : spell(brewTime, spaceOccupied), damageMultiplier(damageMultiplier) {}
 };
 
 #endif //OOP_SPELL_HPP

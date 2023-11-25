@@ -11,6 +11,6 @@ std::ostream &operator<<(std::ostream &out, const spell &obj) {
 
 spell &spell::operator=(const spell &obj) {
     brewTime = obj.brewTime;
-    spaceOccupied = obj.brewTime;
+    spaceOccupied = obj.spaceOccupied;
     return *this;
 }
