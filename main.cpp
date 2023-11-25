@@ -16,8 +16,8 @@ int main() {
     mainPlayer.recruitTroop(std::move(newGiant));
 
     // brewing some spells for the main player - TEST
-    std::unique_ptr<heal> newHealSpell = std::make_unique<heal>();
-    std::unique_ptr<rage> newRageSpell = std::make_unique<rage>();
+    std::unique_ptr<heal> newHealSpell = std::make_unique<heal>(5, 1, 2);
+    std::unique_ptr<rage> newRageSpell = std::make_unique<rage>(3, 1, 1.5);
     mainPlayer.brewSpell(std::move(newHealSpell));
     mainPlayer.brewSpell(std::move(newRageSpell));
 
@@ -31,8 +31,8 @@ int main() {
     secondPlayer.recruitTroop(std::move(newSecondGiant));
 
     // brewing some spells for the second player - TEST
-    std::unique_ptr<heal> newSecondHealSpell = std::make_unique<heal>();
-    std::unique_ptr<rage> newSecondRageSpell = std::make_unique<rage>();
+    std::unique_ptr<heal> newSecondHealSpell = std::make_unique<heal>(5, 1, 2);
+    std::unique_ptr<rage> newSecondRageSpell = std::make_unique<rage>(3, 1, 1.5);
     secondPlayer.brewSpell(std::move(newSecondHealSpell));
     secondPlayer.brewSpell(std::move(newSecondRageSpell));
 
