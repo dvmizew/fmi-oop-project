@@ -24,11 +24,12 @@ private:
 public:
     // init constructor
     player(unsigned int xp, unsigned int rank, unsigned int availableTroops, unsigned int availableSpells,
-           unsigned int townHallLevel, std::string name, const std::allocator<std::unique_ptr<troop>> &troops,
-           const std::allocator<std::unique_ptr<spell>> &spells)
+           unsigned int townHallLevel, std::string name,
+           std::vector<std::unique_ptr<troop>> &&playerTroops,
+           std::vector<std::unique_ptr<spell>> &&playerSpells)
             : xp(xp), rank(rank), availableTroops(availableTroops),
               availableSpells(availableSpells), townHallLevel(townHallLevel),
-              name(std::move(name)), troops(troops), spells(spells) {}
+              name(std::move(name)), troops(std::move(playerTroops)), spells(std::move(playerSpells)) {}
 
     // destructor
     ~player() = default;
