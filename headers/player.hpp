@@ -27,6 +27,13 @@ public:
 
     // destructor
     ~player() {
+        for (auto &i: troops)
+            i.reset();
+
+        troops.clear();
+        for (auto &i: spells)
+            i.reset();
+
         spells.clear();
     }
 
