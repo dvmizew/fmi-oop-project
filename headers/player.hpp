@@ -26,7 +26,10 @@ public:
     player(unsigned int _xp, std::string _name);
 
     // destructor
-    ~player() = default;
+    ~player() {
+        troops.clear();
+        spells.clear();
+    }
 
     // Prototypes
     void viewCurrentArmy();
