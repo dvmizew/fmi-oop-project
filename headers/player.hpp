@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
 #include <vector>
 #include <memory>
 #include "troop.hpp"
@@ -23,11 +24,11 @@ private:
 public:
     // init constructor
     player(unsigned int xp, unsigned int rank, unsigned int availableTroops, unsigned int availableSpells,
-           unsigned int townHallLevel, const std::string &name, const std::allocator<std::unique_ptr<troop>> &troops,
+           unsigned int townHallLevel, std::string name, const std::allocator<std::unique_ptr<troop>> &troops,
            const std::allocator<std::unique_ptr<spell>> &spells)
             : xp(xp), rank(rank), availableTroops(availableTroops),
               availableSpells(availableSpells), townHallLevel(townHallLevel),
-              name(name), troops(troops), spells(spells) {}
+              name(std::move(name)), troops(troops), spells(spells) {}
 
     // destructor
     ~player() = default;
@@ -39,7 +40,7 @@ public:
 
     void viewCurrentArmy();
 
-    void attackEnemyTroop(const player& enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
+    void attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
 
     static void lookForBattle();
 
