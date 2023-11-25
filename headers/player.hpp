@@ -39,7 +39,7 @@ public:
 
     void viewCurrentArmy();
 
-    void attackEnemyTroop(player& enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
+    void attackEnemyTroop(const player& enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
 
     static void lookForBattle();
 

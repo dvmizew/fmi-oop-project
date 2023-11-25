@@ -39,6 +39,6 @@ void player::viewCurrentArmy() {
     std::cout << '\n';
 }
 
-void player::attackEnemyTroop(player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex) {
+void player::attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex) {
     troops[troopIndex]->attack(*enemyPlayer.troops[enemyTroopIndex]);
 }
