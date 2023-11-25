@@ -23,27 +23,19 @@ private:
 
 public:
     // init constructor
-    player(unsigned int xp, unsigned int rank, unsigned int availableTroops, unsigned int availableSpells,
-           unsigned int townHallLevel, std::string name,
-           std::vector<std::unique_ptr<troop>> &&playerTroops,
-           std::vector<std::unique_ptr<spell>> &&playerSpells)
-            : xp(xp), rank(rank), availableTroops(availableTroops),
-              availableSpells(availableSpells), townHallLevel(townHallLevel),
-              name(std::move(name)), troops(std::move(playerTroops)), spells(std::move(playerSpells)) {}
+    player(unsigned int _xp, std::string _name);
 
     // destructor
     ~player() = default;
 
     // Prototypes
-    void recruitTroop(std::unique_ptr<troop> newTroop);
-
-    void brewSpell(std::unique_ptr<spell> newSpell);
-
     void viewCurrentArmy();
 
     void attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
 
     static void lookForBattle();
+
+    player &operator=(const player &obj);
 
     friend std::ostream &operator<<(std::ostream &, const player &);
 };

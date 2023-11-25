@@ -30,21 +30,15 @@ public:
 std::ostream &operator<<(std::ostream &out, const spell &obj);
 
 class heal : public spell {
-private:
-    unsigned int healingAmount{};
 public:
-    heal(unsigned int brewTime, unsigned int spaceOccupied, unsigned int healingAmount)
-            : spell(brewTime, spaceOccupied), healingAmount(healingAmount) {}
+    heal() : spell(5, 1) {}
 
     virtual ~heal() = default;
 };
 
 class rage : public spell {
-private:
-    float damageMultiplier{};
 public:
-    rage(unsigned int brewTime, unsigned int spaceOccupied, float damageMultiplier)
-            : spell(brewTime, spaceOccupied), damageMultiplier(damageMultiplier) {}
+    rage() : spell(3, 1) {}
 
     virtual ~rage() = default;
 };

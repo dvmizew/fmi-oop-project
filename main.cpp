@@ -5,41 +5,12 @@
 // Main menu of the game
 // Testing the logic of the game
 int main() {
-    // First player
-    player mainPlayer = player(0, 0, 0, 0, 0, "You", {}, {});
+    player mainPlayer = player(0, "You");
+    player secondPlayer = player(0, "Alfred");
 
-    std::unique_ptr<troop> newBarbarian = std::make_unique<barbarian>();
-    std::unique_ptr<troop> newArcher = std::make_unique<archer>();
-    std::unique_ptr<troop> newGiant = std::make_unique<giant>();
-    mainPlayer.recruitTroop(std::move(newBarbarian));
-    mainPlayer.recruitTroop(std::move(newArcher));
-    mainPlayer.recruitTroop(std::move(newGiant));
-
-    // brewing some spells for the main player - TEST
-    std::unique_ptr<heal> newHealSpell = std::make_unique<heal>(5, 1, 2);
-    std::unique_ptr<rage> newRageSpell = std::make_unique<rage>(3, 1, 1.5);
-    mainPlayer.brewSpell(std::move(newHealSpell));
-    mainPlayer.brewSpell(std::move(newRageSpell));
-
-    // Second player
-    player secondPlayer = player(0, 0, 0, 0, 0, "Alfred", {}, {});
-    std::unique_ptr<troop> newSecondBarbarian = std::make_unique<barbarian>();
-    std::unique_ptr<troop> newSecondArcher = std::make_unique<archer>();
-    std::unique_ptr<troop> newSecondGiant = std::make_unique<giant>();
-    secondPlayer.recruitTroop(std::move(newSecondBarbarian));
-    secondPlayer.recruitTroop(std::move(newSecondArcher));
-    secondPlayer.recruitTroop(std::move(newSecondGiant));
-
-    // brewing some spells for the second player - TEST
-    std::unique_ptr<heal> newSecondHealSpell = std::make_unique<heal>(5, 1, 2);
-    std::unique_ptr<rage> newSecondRageSpell = std::make_unique<rage>(3, 1, 1.5);
-    secondPlayer.brewSpell(std::move(newSecondHealSpell));
-    secondPlayer.brewSpell(std::move(newSecondRageSpell));
-
-    // Testing the attack function
+    // testing the attack method
     mainPlayer.attackEnemyTroop(secondPlayer, 0, 0);
     mainPlayer.attackEnemyTroop(secondPlayer, 1, 0);
-    mainPlayer.attackEnemyTroop(secondPlayer, 2, 0);
 
     // a "infinitely" running loop for the main menu
     unsigned int choice{};

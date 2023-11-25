@@ -35,13 +35,12 @@ private:
     std::vector<std::unique_ptr<troop>> availableTroops{};
     std::queue<std::unique_ptr<troop>> troopsInQueue{};
 public:
-    barracks(unsigned int hp, unsigned int trainingRate,
-             std::vector<std::unique_ptr<troop>> &&availableTroops,
-             std::queue<std::unique_ptr<troop>> &&troopsInQueue)
-            : construction(hp), trainingRate(trainingRate),
-              availableTroops(std::move(availableTroops)), troopsInQueue(std::move(troopsInQueue)) {}
+    barracks(unsigned int hp, unsigned int trainingRate)
+            : construction(hp), trainingRate(trainingRate) {}
 
     ~barracks() = default;
+
+    void trainTroop(std::unique_ptr<troop> newTroop);
 
     // friend function for overloading <<
     friend std::ostream &operator<<(std::ostream &, const barracks &);
@@ -53,13 +52,11 @@ private:
     std::vector<std::unique_ptr<spell>> availableSpells{};
     std::queue<std::unique_ptr<spell>> spellsInQueue{};
 public:
-    spellFactory(unsigned int hp, unsigned int brewingRate,
-                 std::vector<std::unique_ptr<spell>> &&availableSpells,
-                 std::queue<std::unique_ptr<spell>> &&spellsInQueue)
-            : construction(hp), brewingRate(brewingRate),
-              availableSpells(std::move(availableSpells)), spellsInQueue(std::move(spellsInQueue)) {}
+    explicit spellFactory(unsigned int brewingRate, unsigned int hp) : construction(hp), brewingRate(brewingRate) {}
 
     ~spellFactory() = default;
+
+    void brewSpell(std::unique_ptr<spell> spell);
 };
 
 // prototype of the overloaded operator<< for barracks class
