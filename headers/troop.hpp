@@ -22,31 +22,38 @@ public:
     }
 
     troop() = default;
+
     //~troop() = default;
     virtual ~troop() = default;
 
     friend std::ostream &operator<<(std::ostream &, const troop &);
 
-    // prototypes
-    virtual void attack();
+    void decreaseHP(unsigned int amount);
 
-    virtual void die();
+    // prototypes for virtual pure functions
+    virtual void attack(troop& enemyTroop) = 0;
+
+    virtual void die() = 0;
 };
 
 std::ostream &operator<<(std::ostream &out, const troop &obj);
 
 class barbarian : public troop {
 public:
-    void attack() override {
-        std::cout << "Barbarian attacks!\n";
-    }
+    void attack(troop& enemyTroop) override;
+    void die() override;
 };
 
 class archer : public troop {
 public:
-    void attack() override {
-        std::cout << "Archer shoots!\n";
-    }
+    void attack(troop& enemyTroop) override;
+    void die() override;
+};
+
+class giant : public troop {
+public:
+    void attack(troop& enemyTroop) override;
+    void die() override;
 };
 
 #endif //OOP_TROOP_HPP
