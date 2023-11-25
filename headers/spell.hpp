@@ -25,11 +25,7 @@ public:
     friend std::ostream &operator<<(std::ostream &, const spell &);
 
     // operator= overloading for copying objects
-    spell &operator=(const spell &obj) {
-        brewTime = obj.brewTime;
-        spaceOccupied = obj.brewTime;
-        return *this;
-    }
+    spell &operator=(const spell &obj);
 };
 
 // definition of the overloaded operator<<

@@ -4,6 +4,18 @@
 
 #include "../headers/troop.hpp"
 
+troop &troop::operator=(const troop &other) {
+    if (this != &other) {
+        hp = other.hp;
+        damage = other.damage;
+        trainingTime = other.trainingTime;
+        spaceOccupied = other.spaceOccupied;
+        elixirCost = other.elixirCost;
+        damageType = other.damageType;
+    }
+    return *this;
+}
+
 std::ostream &operator<<(std::ostream &out, const troop &obj) {
     out << obj.hp << " HP, " << obj.damage << " damage, " << obj.trainingTime
         << " training time, and occupies " << obj.spaceOccupied << " spaces and it costs " << obj.elixirCost;

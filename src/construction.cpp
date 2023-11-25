@@ -10,6 +10,13 @@ std::ostream &operator<<(std::ostream &out, const construction &obj) {
     return out;
 }
 
+construction &construction::operator=(const construction &obj) {
+    if (this != &obj) {
+        this->hp = obj.hp;
+    }
+    return *this;
+}
+
 // overloaded << operator for barracks class
 std::ostream &operator<<(std::ostream &out, const barracks &obj) {
     out << obj.trainingRate << " training rate and it has " << obj.availableTroops.size() << " available troops\n";
