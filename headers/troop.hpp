@@ -7,17 +7,21 @@
 #include <string>
 #include <iostream>
 
+#define BASE_DAMAGE 10 // minimum damage a troop can deal
+#define BASE_DAMAGE_BARB 15
+#define BASE_DAMAGE_ARCH 12
+#define BASE_DAMAGE_GIANT 20
+
 class troop {
 private:
-    unsigned int hp{}, damage{}, trainingTime{}, spaceOccupied{}, elixirCost{};
+    unsigned int hp{}, damage = BASE_DAMAGE, trainingTime{}, spaceOccupied{}, elixirCost{};
     bool damageType{};
-    std::string name;
 public:
     // init constructor
     troop(unsigned int hp, unsigned int damage, unsigned int trainingTime, unsigned int spaceOcuppied, bool damageType,
-          unsigned int elixirCost, std::string &name)
+          unsigned int elixirCost)
             : hp(hp), damage(damage), trainingTime(trainingTime), spaceOccupied(spaceOcuppied),
-              elixirCost(elixirCost), damageType(damageType), name(name) {
+              elixirCost(elixirCost), damageType(damageType) {
         std::cout << "Troop created!\n";
     }
 

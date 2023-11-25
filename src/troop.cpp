@@ -4,11 +4,6 @@
 
 #include "../headers/troop.hpp"
 
-#define BASE_DAMAGE 10 // minimum damage a troop can deal
-#define BASE_DAMAGE_BARB 15
-#define BASE_DAMAGE_ARCH 12
-#define BASE_DAMAGE_GIANT 20
-
 std::ostream &operator<<(std::ostream &out, const troop &obj) {
     out << obj.hp << " HP, " << obj.damage << " damage, " << obj.trainingTime
         << " training time, and occupies " << obj.spaceOccupied << " spaces and it costs " << obj.elixirCost;
