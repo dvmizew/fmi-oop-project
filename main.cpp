@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <limits>
 #include "headers/player.hpp"
 
 // Main menu of the game
@@ -51,7 +51,16 @@ int main() {
         std::cout << "2. Look for battle\n";
         std::cout << "3. Check your current stats\n";
         std::cout << "Your choice: ";
-        std::cin >> choice;
+        try {
+            std::cin >> choice;
+            if (choice > 3)
+                throw std::invalid_argument("Invalid choice. Please try again.\n");
+        } catch (std::invalid_argument &e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+            std::cin.clear(); // for clearing the error flag
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // for clearing the buffer
+        }
+
         switch (choice) {
             case 0:
                 std::cout << "Exiting the program.\n";
