@@ -5,7 +5,7 @@
 #include "../headers/player.hpp"
 
 std::ostream &operator<<(std::ostream &out, const player &obj) {
-    out << "Town Hall level is :" << obj.townHallLevel;
+    out << "Town Hall level is: " << obj.townHallLevel;
     out << "\nName: " << obj.name << '\n';
     out << obj.xp << " XP\n" << obj.rank << " rank\n";
     out << "It unlocked " << obj.availableTroops << " troops and " << obj.availableSpells << " spells\n\n";
@@ -36,4 +36,5 @@ void player::viewCurrentArmy() {
     for (const auto &i: spells) {
         std::cout << i << '\n';
     }
+    std::cout << '\n';
 }
