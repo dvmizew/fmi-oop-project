@@ -14,6 +14,7 @@ int main() {
     mainPlayer.recruitTroop(std::move(newBarbarian));
     mainPlayer.recruitTroop(std::move(newArcher));
     mainPlayer.recruitTroop(std::move(newGiant));
+
     // brewing some spells for the main player - TEST
     std::unique_ptr<heal> newHealSpell = std::make_unique<heal>();
     std::unique_ptr<rage> newRageSpell = std::make_unique<rage>();
@@ -29,7 +30,17 @@ int main() {
     secondPlayer.recruitTroop(std::move(newSecondArcher));
     secondPlayer.recruitTroop(std::move(newSecondGiant));
 
-    //std::vector<player> players{};
+    // brewing some spells for the second player - TEST
+    std::unique_ptr<heal> newSecondHealSpell = std::make_unique<heal>();
+    std::unique_ptr<rage> newSecondRageSpell = std::make_unique<rage>();
+    secondPlayer.brewSpell(std::move(newSecondHealSpell));
+    secondPlayer.brewSpell(std::move(newSecondRageSpell));
+
+    // Testing the attack function
+    mainPlayer.attackEnemyTroop(secondPlayer, 0, 0);
+    mainPlayer.attackEnemyTroop(secondPlayer, 1, 0);
+    mainPlayer.attackEnemyTroop(secondPlayer, 2, 0);
+
     // a "infinitely" running loop for the main menu
     unsigned int choice{};
     do {
