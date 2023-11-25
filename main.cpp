@@ -2,22 +2,34 @@
 #include <vector>
 #include "headers/player.hpp"
 
+// Main menu of the game
+// Testing the logic of the game
 int main() {
-    // Main menu
+    // First player
     player mainPlayer = player(0, 0, 0, 0, 0, "You", {}, {});
 
-    // recruiting some troops for the main player - TEST
-    std::unique_ptr<barbarian> newBarbarian = std::make_unique<barbarian>();
-    std::unique_ptr<archer> newArcher = std::make_unique<archer>();
+    std::unique_ptr<troop> newBarbarian = std::make_unique<barbarian>();
+    std::unique_ptr<troop> newArcher = std::make_unique<archer>();
+    std::unique_ptr<troop> newGiant = std::make_unique<giant>();
     mainPlayer.recruitTroop(std::move(newBarbarian));
     mainPlayer.recruitTroop(std::move(newArcher));
+    mainPlayer.recruitTroop(std::move(newGiant));
     // brewing some spells for the main player - TEST
     std::unique_ptr<heal> newHealSpell = std::make_unique<heal>();
     std::unique_ptr<rage> newRageSpell = std::make_unique<rage>();
     mainPlayer.brewSpell(std::move(newHealSpell));
     mainPlayer.brewSpell(std::move(newRageSpell));
 
-    std::vector<player> players{};
+    // Second player
+    player secondPlayer = player(0,0,0,0,0,"Alfred", {}, {});
+    std::unique_ptr<troop> newSecondBarbarian = std::make_unique<barbarian>();
+    std::unique_ptr<troop> newSecondArcher = std::make_unique<archer>();
+    std::unique_ptr<troop> newSecondGiant = std::make_unique<giant>();
+    secondPlayer.recruitTroop(std::move(newSecondBarbarian));
+    secondPlayer.recruitTroop(std::move(newSecondArcher));
+    secondPlayer.recruitTroop(std::move(newSecondGiant));
+
+    //std::vector<player> players{};
     // a "infinitely" running loop for the main menu
     unsigned int choice{};
     do {
@@ -35,6 +47,7 @@ int main() {
                 break;
             case 1:
                 mainPlayer.viewCurrentArmy();
+                secondPlayer.viewCurrentArmy();
                 break;
             case 2:
                 player::lookForBattle();
