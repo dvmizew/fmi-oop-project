@@ -23,13 +23,18 @@ private:
 
 public:
     // init constructor
-    player(unsigned int _xp, std::string _name);
+    player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {}
 
     // destructor
     ~player() {
         troops.clear();
         spells.clear();
     }
+
+    // getters
+    std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
+
+    std::unique_ptr<spell> getSpellAtIndex(size_t index) const;
 
     // Prototypes
     void viewCurrentArmy();

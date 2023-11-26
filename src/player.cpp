@@ -6,8 +6,6 @@
 #include "../headers/custom_exceptions.h"
 #include "../headers/player.hpp"
 
-player::player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {}
-
 std::ostream &operator<<(std::ostream &out, const player &obj) {
     out << "Town Hall level is: " << obj.townHallLevel;
     out << "\nName: " << obj.name << '\n';
@@ -34,8 +32,14 @@ void player::viewCurrentArmy() {
 }
 
 void player::attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex) {
-    if (troopIndex >= troops.size() || enemyTroopIndex >= enemyPlayer.troops.size()) {
-        throw InvalidIndexException();
+    try {
+        if (troopIndex >= troops.size() || enemyTroopIndex >= enemyPlayer.troops.size()) {
+            throw InvalidIndexException();
+        }
+    }
+    catch (InvalidIndexException &e) {
+        std::cout << e.what();
+        return;
     }
 
     const auto &currentTroop = troops[troopIndex];
@@ -66,4 +70,30 @@ void player::addTroop(std::unique_ptr<troop> troop) {
 
 void player::addSpell(std::unique_ptr<spell> spell) {
     spells.emplace_back(std::move(spell));
+}
+
+std::unique_ptr<spell> player::getSpellAtIndex(size_t index) const {
+    try {
+        if (index >= spells.size()) {
+            throw InvalidIndexException();
+        }
+    }
+    catch (InvalidIndexException &e) {
+        std::cout << e.what();
+        return nullptr;
+    }
+    return std::unique_ptr<spell>(spells[index].get());
+}
+
+std::unique_ptr<troop> player::getTroopAtIndex(size_t index) const {
+    try {
+        if (index >= troops.size()) {
+            throw InvalidIndexException();
+        }
+    }
+    catch (InvalidIndexException &e) {
+        std::cout << e.what();
+        return nullptr;
+    }
+    return std::unique_ptr<troop>(troops[index].get());
 }
