@@ -24,9 +24,9 @@ int main() {
     mainPlayer.addTroop(std::move(newGiant));
 
     std::unique_ptr<spell> newRage = std::make_unique<rage>();
-    std::unique_ptr<spell> newHeal = std::make_unique<heal>();
+    //std::unique_ptr<spell> newHeal = std::make_unique<heal>();
     mainPlayer.addSpell(std::move(newRage));
-    mainPlayer.addSpell(std::move(newHeal));
+    //mainPlayer.addSpell(std::move(newHeal));
 
     std::unique_ptr<troop> newBarbarian2 = std::make_unique<barbarian>();
     std::unique_ptr<troop> newArcher2 = std::make_unique<archer>();
@@ -43,6 +43,15 @@ int main() {
     // testing the attack method
     mainPlayer.attackEnemyTroop(secondPlayer, 0, 0);
     mainPlayer.attackEnemyTroop(secondPlayer, 1, 0);
+
+    std::unique_ptr<spell> newHeal = std::make_unique<heal>();
+    mainPlayer.addSpell(std::move(newHeal));
+
+    // testing the cast_heal method
+    std::unique_ptr<spell> spellPtr = mainPlayer.getSpellAtIndex(1);
+    std::unique_ptr<troop> troopPtr = mainPlayer.getTroopAtIndex(0);
+
+    heal::cast_heal(std::move(spellPtr), std::move(troopPtr));
 
     // a "infinitely" running loop for the main menu
     unsigned int choice{};
