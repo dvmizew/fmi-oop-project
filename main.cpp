@@ -47,11 +47,21 @@ int main() {
     std::unique_ptr<spell> newHeal = std::make_unique<heal>();
     mainPlayer.addSpell(std::move(newHeal));
 
-    // testing the cast_heal method
+    // Cast heal on newBarbarian
     std::unique_ptr<spell> spellPtr = mainPlayer.getSpellAtIndex(1);
     std::unique_ptr<troop> troopPtr = mainPlayer.getTroopAtIndex(0);
 
-    heal::cast_heal(std::move(spellPtr), std::move(troopPtr));
+    if (spellPtr && troopPtr) {
+        heal *healSpell = dynamic_cast<heal *>(spellPtr.get());
+        if (healSpell) {
+            std::unique_ptr<heal> newHealSpell = heal::cast_heal(std::move(spellPtr), std::move(troopPtr));
+            if (newHealSpell) {
+                std::cout << "Healing successfully cast on newBarbarian!\n";
+            } else {
+                std::cout << "Failed to cast heal on newBarbarian.\n";
+            }
+        }
+    }
 
     // a "infinitely" running loop for the main menu
     unsigned int choice{};
