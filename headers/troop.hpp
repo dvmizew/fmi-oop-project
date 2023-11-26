@@ -6,6 +6,7 @@
 
 #include <string>
 #include <iostream>
+#include <memory>
 
 #define BASE_DAMAGE 10 // minimum damage a troop can deal
 #define BASE_DAMAGE_BARB 15
@@ -24,6 +25,18 @@ public:
               elixirCost(elixirCost), damageType(damageType) {
         std::cout << "Troop created!\n";
     }
+
+    // copy constructor
+    troop(const troop &other) {
+        hp = other.hp;
+        damage = other.damage;
+        trainingTime = other.trainingTime;
+        spaceOccupied = other.spaceOccupied;
+        elixirCost = other.elixirCost;
+        damageType = other.damageType;
+    }
+
+    virtual std::unique_ptr<troop> clone() = 0;
 
     troop() = default;
 
@@ -51,6 +64,10 @@ public:
         std::cout << "Barbarian created!\n";
     }
 
+    std::unique_ptr<troop> clone() override {
+        return std::make_unique<barbarian>(*this);
+    }
+
     ~barbarian() override = default;
 
     void attack(troop &enemyTroop) override;
@@ -64,6 +81,10 @@ public:
         std::cout << "Archer created!\n";
     }
 
+    std::unique_ptr<troop> clone() override {
+        return std::make_unique<archer>(*this);
+    }
+
     ~archer() override = default;
 
     void attack(troop &enemyTroop) override;
@@ -75,6 +96,10 @@ class giant : public troop {
 public:
     giant() : troop(200, BASE_DAMAGE_GIANT, 0, 5, true, 500) {
         std::cout << "Giant created!\n";
+    }
+
+    std::unique_ptr<troop> clone() override {
+        return std::make_unique<giant>(*this);
     }
 
     ~giant() override = default;
