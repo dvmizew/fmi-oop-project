@@ -19,6 +19,10 @@ int main() {
     std::unique_ptr<troop> newBarbarian = std::make_unique<barbarian>();
     std::unique_ptr<troop> newArcher = std::make_unique<archer>();
     std::unique_ptr<troop> newGiant = std::make_unique<giant>();
+
+    // cloning the newBarbaran troop - demonstration purposes
+    std::unique_ptr<troop> copyBarbarian = newBarbarian->clone();
+
     mainPlayer.addTroop(std::move(newBarbarian));
     mainPlayer.addTroop(std::move(newArcher));
     mainPlayer.addTroop(std::move(newGiant));
