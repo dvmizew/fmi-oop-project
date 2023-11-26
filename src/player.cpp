@@ -6,14 +6,7 @@
 #include "../headers/custom_exceptions.h"
 #include "../headers/player.hpp"
 
-player::player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {
-//    troops.emplace_back(std::make_unique<barbarian>());
-//    troops.emplace_back(std::make_unique<archer>());
-//    troops.emplace_back(std::make_unique<giant>());
-//
-//    spells.emplace_back(std::make_unique<rage>());
-//    spells.emplace_back(std::make_unique<heal>());
-}
+player::player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {}
 
 std::ostream &operator<<(std::ostream &out, const player &obj) {
     out << "Town Hall level is: " << obj.townHallLevel;

@@ -5,6 +5,8 @@
 #define OOP_SPELL_HPP
 
 #include <ostream>
+#include <memory>
+#include <iostream>
 
 class spell {
 private:
@@ -17,7 +19,7 @@ public:
     spell(const spell &obj) : brewTime{obj.brewTime}, spaceOccupied{obj.spaceOccupied} {}
 
     // Destructor
-    ~spell() = default;
+    virtual ~spell() = default;
 
     // friend function for overloading <<
     friend std::ostream &operator<<(std::ostream &, const spell &);
@@ -33,14 +35,16 @@ class heal : public spell {
 public:
     heal() : spell(5, 1) {}
 
-    virtual ~heal() = default;
+    ~heal() override = default;
+
+    static std::unique_ptr<heal> cast_heal(std::unique_ptr<spell> sp);
 };
 
 class rage : public spell {
 public:
     rage() : spell(3, 1) {}
 
-    virtual ~rage() = default;
+    ~rage() override = default;
 };
 
 #endif //OOP_SPELL_HPP

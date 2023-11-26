@@ -8,12 +8,14 @@ int main() {
     player mainPlayer = player(0, "You");
     player secondPlayer = player(0, "Alfred");
 
+    // creating the buildings
     barracks mainBarracks = barracks(1000, 1);
     barracks secondBarracks = barracks(1000, 1);
 
     spellFactory mainSpellFactory = spellFactory(1000);
-    spellFactory secondSpellFactory = spellFactory( 1000);
+    spellFactory secondSpellFactory = spellFactory(1000);
 
+    // adding troops and spells to the players
     std::unique_ptr<troop> newBarbarian = std::make_unique<barbarian>();
     std::unique_ptr<troop> newArcher = std::make_unique<archer>();
     std::unique_ptr<troop> newGiant = std::make_unique<giant>();
