@@ -15,22 +15,11 @@ spell &spell::operator=(const spell &obj) {
     return *this;
 }
 
-//std::unique_ptr<heal> heal::cast_heal(std::unique_ptr<spell> sp) {
-//    // Check if the spell is a heal spell
-//    if (dynamic_cast<heal *>(sp.get())) {
-//        std::cout << "Healing troop...\n";
-//        return std::unique_ptr<heal>(dynamic_cast<heal *>(sp.release()));
-//    } else {
-//        std::cout << "Invalid spell for healing.\n";
-//        return nullptr;
-//    }
-//}
-
 std::unique_ptr<heal> heal::cast_heal(std::unique_ptr<spell> &&sp, std::unique_ptr<troop> &&tr) {
     // Check if the spell is a heal spell
     if (dynamic_cast<heal *>(sp.get())) {
         std::cout << "Healing troop...\n";
-        tr->increaseHealth(20); // Assuming increaseHealth method is available in the troop class
+        tr->increaseHealth(20);
         return std::unique_ptr<heal>(dynamic_cast<heal *>(sp.release()));
     } else {
         std::cout << "Invalid spell for healing.\n";

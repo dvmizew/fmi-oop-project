@@ -38,7 +38,6 @@ public:
 
     ~heal() override = default;
 
-    //static std::unique_ptr<heal> cast_heal(std::unique_ptr<spell> sp);
     static std::unique_ptr<heal> cast_heal(std::unique_ptr<spell> &&sp, std::unique_ptr<troop> &&tr);
 };
 
