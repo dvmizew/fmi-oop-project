@@ -52,14 +52,11 @@ int main() {
     std::unique_ptr<troop> troopPtr = mainPlayer.getTroopAtIndex(0);
 
     if (spellPtr && troopPtr) {
-        heal *healSpell = dynamic_cast<heal *>(spellPtr.get());
-        if (healSpell) {
-            std::unique_ptr<heal> newHealSpell = heal::cast_heal(std::move(spellPtr), std::move(troopPtr));
-            if (newHealSpell) {
-                std::cout << "Healing successfully cast on newBarbarian!\n";
-            } else {
-                std::cout << "Failed to cast heal on newBarbarian.\n";
-            }
+        std::unique_ptr<heal> newHealSpell = heal::cast_heal(std::move(spellPtr), std::move(troopPtr));
+        if (newHealSpell) {
+            std::cout << "Healing successfully cast on newBarbarian!\n";
+        } else {
+            std::cout << "Failed to cast heal on newBarbarian.\n";
         }
     }
 
