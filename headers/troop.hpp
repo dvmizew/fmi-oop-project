@@ -35,6 +35,8 @@ public:
 
     void decreaseHP(unsigned int amount);
 
+    void increaseHealth(unsigned int amount);
+
     // prototypes for virtual pure functions
     virtual void attack(troop &enemyTroop) = 0;
 

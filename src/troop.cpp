@@ -45,6 +45,10 @@ void troop::die() {
         std::cout << "This troop is dead!\n";
 }
 
+void troop::increaseHealth(unsigned int amount) {
+    hp += amount;
+}
+
 // Implementation for virtual pure functions of derived classes
 void barbarian::attack(troop &enemyTroop) {
     std::cout << "Barbarian attacks!\n";
