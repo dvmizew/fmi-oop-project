@@ -56,7 +56,7 @@ int main() {
     std::unique_ptr<troop> troopPtr = mainPlayer.getTroopAtIndex(0);
 
     if (spellPtr && troopPtr) {
-        std::unique_ptr<heal> newHealSpell = heal::cast_heal(std::move(spellPtr), std::move(troopPtr));
+        std::unique_ptr<heal> newHealSpell = heal::cast_heal(std::move(spellPtr), troopPtr);
         if (newHealSpell) {
             std::cout << "Healing successfully cast on newBarbarian!\n";
         } else {
