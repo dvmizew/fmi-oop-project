@@ -28,6 +28,11 @@ player &player::operator=(const player &obj) {
     return *this;
 }
 
+player player::createPlayer(unsigned int _xp, std::string _name) {
+    playerCount++;
+    return {_xp, std::move(_name)};
+}
+
 void player::viewCurrentArmy() {
     std::cout << "This is your army chief!\n";
     std::cout << "Troops: ";

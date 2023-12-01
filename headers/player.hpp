@@ -25,11 +25,13 @@ private:
 public:
     // init constructor
     player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {
-        playerCount++;
+        std::cout << "Player created!\n";
     }
 
     // destructor
     ~player() = default;
+
+    static player createPlayer(unsigned int _xp, std::string _name);
 
     // getters
     [[nodiscard]] std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
