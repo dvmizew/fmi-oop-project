@@ -17,4 +17,14 @@ public:
     [[nodiscard]] const char *what() const noexcept override;
 };
 
+class NoTroopsException : public std::exception {
+public:
+    [[nodiscard]] const char *what() const noexcept override;
+};
+
+class NoSpellsException : public std::exception {
+public:
+    [[nodiscard]] const char *what() const noexcept override;
+};
+
 #endif //OOP_CUSTOM_EXCEPTIONS_H
