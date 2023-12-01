@@ -1,3 +1,13 @@
 //
 // Created by radud on 01.12.2023.
 //
+
+#include "../headers/custom_exceptions.h"
+
+const char *InvalidIndexException::what() const noexcept {
+    return "Invalid index!\n";
+}
+
+const char *NullPointerException::what() const noexcept {
+    return "Null pointer!\n";
+}

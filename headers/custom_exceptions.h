@@ -9,16 +9,12 @@
 
 class InvalidIndexException : public std::exception {
 public:
-    const char *what() const noexcept override {
-        return "Invalid index!\n";
-    }
+    [[nodiscard]] const char *what() const noexcept override;
 };
 
 class NullPointerException : public std::exception {
 public:
-    const char *what() const noexcept override {
-        return "Null pointer!\n";
-    }
+    [[nodiscard]] const char *what() const noexcept override;
 };
 
 #endif //OOP_CUSTOM_EXCEPTIONS_H
