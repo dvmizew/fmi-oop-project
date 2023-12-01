@@ -143,12 +143,7 @@ void player::castSpellOnTroop(std::unique_ptr<troop> &tr, unsigned int spellInde
     if (dynamic_cast<heal *>(spells[spellIndex].get())) {
         std::cout << "Healing troop...\n";
         spells[spellIndex]->cast(tr);
-    } else {
-        std::cout << "Invalid spell!\n";
-    }
-
-    // check if the spell is rage
-    if (dynamic_cast<rage *>(spells[spellIndex].get())) {
+    } else if (dynamic_cast<rage *>(spells[spellIndex].get())) {
         std::cout << "Raging troop...\n";
         spells[spellIndex]->cast(tr);
     } else {
