@@ -29,9 +29,10 @@ public:
     ~player() = default;
 
     // getters
-    std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
 
-    std::unique_ptr<spell> getSpellAtIndex(size_t index) const;
+    [[nodiscard]] std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
+
+    [[nodiscard]] std::unique_ptr<spell> getSpellAtIndex(size_t index) const;
 
     // Prototypes
     void viewCurrentArmy();

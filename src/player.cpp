@@ -72,28 +72,38 @@ void player::addSpell(std::unique_ptr<spell> spell) {
     spells.emplace_back(std::move(spell));
 }
 
-std::unique_ptr<spell> player::getSpellAtIndex(size_t index) const {
-    try {
-        if (index >= spells.size()) {
-            throw InvalidIndexException();
-        }
-    }
-    catch (InvalidIndexException &e) {
-        std::cout << e.what();
-        return nullptr;
-    }
-    return std::unique_ptr<spell>(spells[index].get());
-}
-
 std::unique_ptr<troop> player::getTroopAtIndex(size_t index) const {
     try {
         if (index >= troops.size()) {
             throw InvalidIndexException();
         }
+
+        std::unique_ptr<troop> clonedTroop;
+        if (troops[index]) {
+            clonedTroop.reset(dynamic_cast<troop *>(troops[index]->clone().release()));
+        }
+        return clonedTroop;
     }
     catch (InvalidIndexException &e) {
         std::cout << e.what();
-        return nullptr;
+        throw;
     }
-    return std::unique_ptr<troop>(troops[index].get());
+}
+
+std::unique_ptr<spell> player::getSpellAtIndex(size_t index) const {
+    try {
+        if (index >= spells.size()) {
+            throw InvalidIndexException();
+        }
+
+        std::unique_ptr<spell> clonedSpell;
+        if (spells[index]) {
+            clonedSpell.reset(dynamic_cast<spell *>(spells[index]->clone().release()));
+        }
+        return clonedSpell;
+    }
+    catch (InvalidIndexException &e) {
+        std::cout << e.what();
+        throw;
+    }
 }
