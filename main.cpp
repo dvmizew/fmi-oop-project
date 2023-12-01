@@ -23,10 +23,11 @@ int main() {
         std::cout << "1. View the current army\n";
         std::cout << "2. Create your army\n";
         std::cout << "3. Attack the enemy\n";
+        std::cout << "4. View the player count\n";
         std::cout << "Your choice: ";
         try {
             std::cin >> choice;
-            if (choice > 3)
+            if (choice > 4)
                 throw std::invalid_argument("Invalid choice. Please try again.\n");
         } catch (std::invalid_argument &e) {
             std::cerr << "Error: " << e.what() << std::endl;
@@ -50,6 +51,9 @@ int main() {
             case 3:
                 // a function to test the attack method
                 mainPlayer.attackPlayer(secondPlayer);
+                break;
+            case 4:
+                std::cout << "The player count is: " << player::getPlayerCount() << std::endl;
                 break;
             default:
                 std::cout << "Invalid choice. Please try again.\n";

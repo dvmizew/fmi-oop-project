@@ -16,6 +16,7 @@
 
 class player {
 private:
+    static unsigned int playerCount;
     unsigned int xp{}, rank{}, availableTroops{}, availableSpells{}, townHallLevel{};
     std::string name{};
     std::vector<std::unique_ptr<troop>> troops{}; // the player's army
@@ -23,7 +24,9 @@ private:
 
 public:
     // init constructor
-    player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {}
+    player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {
+        playerCount++;
+    }
 
     // destructor
     ~player() = default;
@@ -32,6 +35,10 @@ public:
     [[nodiscard]] std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
 
     [[nodiscard]] std::unique_ptr<spell> getSpellAtIndex(size_t index) const;
+
+    static unsigned int getPlayerCount() {
+        return playerCount;
+    }
 
     // Prototypes
     void viewCurrentArmy();

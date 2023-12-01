@@ -14,6 +14,8 @@ std::ostream &operator<<(std::ostream &out, const player &obj) {
     return out;
 }
 
+unsigned int player::playerCount = 0;
+
 player &player::operator=(const player &obj) {
     if (this != &obj) {
         this->xp = obj.xp;
