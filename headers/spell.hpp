@@ -22,6 +22,8 @@ public:
     // Destructor
     virtual ~spell() = default;
 
+    virtual void cast(std::unique_ptr<troop> &tr) = 0;
+
     // friend function for overloading <<
     friend std::ostream &operator<<(std::ostream &, const spell &);
 
@@ -38,7 +40,9 @@ public:
 
     ~heal() override = default;
 
-    static std::unique_ptr<heal> cast_heal(std::unique_ptr<spell> sp, std::unique_ptr<troop> &tr);
+    void cast(std::unique_ptr<troop> &tr) override;
+
+    //static std::unique_ptr<heal> cast_heal(std::unique_ptr<spell> sp, std::unique_ptr<troop> &tr);
 };
 
 class rage : public spell {
@@ -46,6 +50,8 @@ public:
     rage() : spell(3, 1) {}
 
     ~rage() override = default;
+
+    void cast(std::unique_ptr<troop> &tr) override;
 };
 
 #endif //OOP_SPELL_HPP
