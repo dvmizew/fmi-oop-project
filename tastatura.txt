@@ -1,6 +1,6 @@
-In meniul principal al jocului, utilizatorul poate alege una dintre urmatoarele optiuni:
+In the main menu of the game, the player can choose the following options:
 
-0 - Iesirea din joc
-1 - Afisarea armatei curente
-2 - Cautarea de lupte
-3 - Afisarea statisticilor curente ale jucatorului
+0. Exit the game
+1. View the list of the army of the player
+2. Create the army of the player
+3. Attack the enemy
