@@ -29,7 +29,6 @@ public:
     ~player() = default;
 
     // getters
-
     [[nodiscard]] std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
 
     [[nodiscard]] std::unique_ptr<spell> getSpellAtIndex(size_t index) const;
@@ -41,9 +40,13 @@ public:
 
     void addSpell(std::unique_ptr<spell> spell);
 
+    void createArmy();
+
     void attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
 
-    static void lookForBattle();
+    void castSpellOnTroop(std::unique_ptr<troop> &tr, unsigned int spellIndex);
+
+    void attackPlayer(player &enemyPlayer);
 
     player &operator=(const player &obj);
 
