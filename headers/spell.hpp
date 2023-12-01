@@ -24,6 +24,8 @@ public:
 
     virtual void cast(std::unique_ptr<troop> &tr) = 0;
 
+    virtual std::unique_ptr<spell> clone() = 0;
+
     // friend function for overloading <<
     friend std::ostream &operator<<(std::ostream &, const spell &);
 
@@ -42,7 +44,9 @@ public:
 
     void cast(std::unique_ptr<troop> &tr) override;
 
-    //static std::unique_ptr<heal> cast_heal(std::unique_ptr<spell> sp, std::unique_ptr<troop> &tr);
+    std::unique_ptr<spell> clone() override {
+        return std::make_unique<heal>(*this);
+    }
 };
 
 class rage : public spell {
@@ -50,6 +54,10 @@ public:
     rage() : spell(3, 1) {}
 
     ~rage() override = default;
+
+    std::unique_ptr<spell> clone() override {
+        return std::make_unique<rage>(*this);
+    }
 
     void cast(std::unique_ptr<troop> &tr) override;
 };

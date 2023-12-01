@@ -62,15 +62,6 @@ int main() {
         std::cout << "Failed to cast heal on newBarbarian.\n";
     }
 
-//    if (spellPtr && troopPtr) {
-//        std::unique_ptr<heal> newHealSpell = heal::cast_heal(std::move(spellPtr), troopPtr);
-//        if (newHealSpell) {
-//            std::cout << "Healing successfully cast on newBarbarian!\n";
-//        } else {
-//            std::cout << "Failed to cast heal on newBarbarian.\n";
-//        }
-//    }
-
     // a "infinitely" running loop for the main menu
     unsigned int choice{};
     do {
