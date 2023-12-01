@@ -26,10 +26,7 @@ public:
     player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {}
 
     // destructor
-    ~player() {
-        troops.clear();
-        spells.clear();
-    }
+    ~player() = default;
 
     // getters
     std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
