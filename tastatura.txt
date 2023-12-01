@@ -4,3 +4,4 @@ In the main menu of the game, the player can choose the following options:
 1. View the list of the army of the player
 2. Create the army of the player
 3. Attack the enemy
+4. View the player count of the game
