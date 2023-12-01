@@ -100,6 +100,7 @@ add_executable(${PROJECT_NAME} main.cpp
         src/spell.cpp
         src/troop.cpp
         headers/custom_exceptions.h
+        src/custom_exceptions.cpp
 )
 
 ###############################################################################
