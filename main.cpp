@@ -4,8 +4,8 @@
 
 // Main menu of the game
 int main() {
-    player mainPlayer = player(0, "You");
-    player secondPlayer = player(0, "Alfred");
+    player mainPlayer = player::createPlayer(0, "You");
+    player secondPlayer = player::createPlayer(0, "Alfred");
 
     // creating the buildings
     barracks mainBarracks = barracks(1000, 1);
