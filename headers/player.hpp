@@ -19,6 +19,7 @@ private:
     static unsigned int playerCount;
     unsigned int xp{}, rank{}, availableTroops{}, availableSpells{}, townHallLevel{};
     std::string name{};
+    spell *currentSpell{};
     std::vector<std::unique_ptr<troop>> troops{}; // the player's army
     std::vector<std::unique_ptr<spell>> spells{}; // the player's spells
 
@@ -33,6 +34,11 @@ public:
 
     static player createPlayer(unsigned int _xp, std::string _name);
 
+    // setters
+    void setCurrentSpell(spell *ptr) {
+        currentSpell = ptr;
+    }
+
     // getters
     [[nodiscard]] std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
 
@@ -41,6 +47,8 @@ public:
     static unsigned int getPlayerCount() {
         return playerCount;
     }
+
+    void castCurrentSpell(std::unique_ptr<troop> &tr);
 
     // Prototypes
     void viewCurrentArmy();

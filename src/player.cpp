@@ -97,6 +97,14 @@ std::unique_ptr<spell> player::getSpellAtIndex(size_t index) const {
     }
 }
 
+void player::castCurrentSpell(std::unique_ptr<troop> &tr) {
+    if (!currentSpell) {
+        throw NullPointerException();
+    }
+
+    currentSpell->cast(tr);
+}
+
 void player::createArmy() {
     std::cout << "Creating army...\n";
     // adding troops and spells to the players
@@ -153,16 +161,19 @@ void player::castSpellOnTroop(std::unique_ptr<troop> &tr, unsigned int spellInde
         throw NullPointerException();
     }
 
+    setCurrentSpell(spells[spellIndex].get());
+    castCurrentSpell(tr);
+
     // check if the spell is heal
-    if (dynamic_cast<heal *>(spells[spellIndex].get())) {
-        std::cout << "Healing troop...\n";
-        spells[spellIndex]->cast(tr);
-    } else if (dynamic_cast<rage *>(spells[spellIndex].get())) {
-        std::cout << "Raging troop...\n";
-        spells[spellIndex]->cast(tr);
-    } else {
-        std::cout << "Invalid spell!\n";
-    }
+//    if (dynamic_cast<heal *>(spells[spellIndex].get())) {
+//        std::cout << "Healing troop...\n";
+//        spells[spellIndex]->cast(tr);
+//    } else if (dynamic_cast<rage *>(spells[spellIndex].get())) {
+//        std::cout << "Raging troop...\n";
+//        spells[spellIndex]->cast(tr);
+//    } else {
+//        std::cout << "Invalid spell!\n";
+//    }
 }
 
 void player::attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex) {
