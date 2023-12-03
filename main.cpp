@@ -20,14 +20,15 @@ int main() {
         std::cout << "Main menu\n\n";
         std::cout << "Press the key for the desired option and press ENTER:\n";
         std::cout << "0. EXIT\n";
-        std::cout << "1. View the current army\n";
-        std::cout << "2. Create your army\n";
-        std::cout << "3. Attack the enemy\n";
-        std::cout << "4. View the player count\n";
+        std::cout << "1. Add new player\n";
+        std::cout << "2. View the current army\n";
+        std::cout << "3. Create your army\n";
+        std::cout << "4. Attack the enemy\n";
+        std::cout << "5. View the player count\n";
         std::cout << "Your choice: ";
         try {
             std::cin >> choice;
-            if (choice > 4)
+            if (choice > 5)
                 throw std::invalid_argument("Invalid choice. Please try again.\n");
         } catch (std::invalid_argument &e) {
             std::cerr << "Error: " << e.what() << std::endl;
@@ -40,19 +41,22 @@ int main() {
                 std::cout << "Exiting the program.\n";
                 break;
             case 1:
+                player::createPlayer(0, "");
+                break;
+            case 2:
                 mainPlayer.viewCurrentArmy();
                 secondPlayer.viewCurrentArmy();
                 break;
-            case 2:
+            case 3:
                 // a function to create the army for the player
                 mainPlayer.createArmy();
                 secondPlayer.createArmy();
                 break;
-            case 3:
+            case 4:
                 // a function to test the attack method
                 mainPlayer.attackPlayer(secondPlayer);
                 break;
-            case 4:
+            case 5:
                 std::cout << "The player count is: " << player::getPlayerCount() << std::endl;
                 break;
             default:

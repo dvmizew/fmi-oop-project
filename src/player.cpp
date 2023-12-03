@@ -6,6 +6,7 @@
 #include "../headers/custom_exceptions.h"
 #include "../headers/player.hpp"
 
+// overloaded operator<< for printing the player's info
 std::ostream &operator<<(std::ostream &out, const player &obj) {
     out << "Town Hall level is: " << obj.townHallLevel;
     out << "\nName: " << obj.name << '\n';
@@ -29,8 +30,14 @@ player &player::operator=(const player &obj) {
 }
 
 player player::createPlayer(unsigned int _xp, std::string _name) {
+    std::string playerName = std::move(_name);
+    if (playerName.empty()) {
+        std::cout << "Enter player name: ";
+        std::cin >> playerName;
+    }
+
     playerCount++;
-    return {_xp, std::move(_name)};
+    return {_xp, std::move(playerName)};
 }
 
 void player::viewCurrentArmy() {
