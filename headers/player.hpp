@@ -25,7 +25,7 @@ private:
 public:
     // init constructor
     player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {
-        std::cout << "Player created!\n";
+        std::cout << "Player created! Name: " << name << '\n';
     }
 
     // destructor
@@ -61,8 +61,5 @@ public:
 
     friend std::ostream &operator<<(std::ostream &, const player &);
 };
-
-// definition of the overloaded operator<< for showing in console the player's stats
-std::ostream &operator<<(std::ostream &out, const player &obj);
 
 #endif //OOP_PLAYER_HPP
