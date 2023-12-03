@@ -1,7 +1,8 @@
 In the main menu of the game, the player can choose the following options:
 
 0. Exit the game
-1. View the list of the army of the player
-2. Create the army of the player
-3. Attack the enemy
-4. View the player count of the game
+1. Add a player
+2. View the current army of the player
+3. Create a new army for the player
+4. Attack another player
+5. View the current count of the players
