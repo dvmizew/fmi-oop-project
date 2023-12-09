@@ -44,11 +44,36 @@ void player::viewCurrentArmy() {
     std::cout << "This is your army chief!\n";
     std::cout << "Troops: ";
     for (const auto &i: troops) {
-        std::cout << i << '\n';
+        //std::cout << i << '\n';
+        unsigned int barbarianCount = 0, archerCount = 0, giantCount = 0;
+        if (dynamic_cast<barbarian *>(i.get())) {
+            barbarianCount++;
+        } else if (dynamic_cast<archer *>(i.get())) {
+            archerCount++;
+        } else if (dynamic_cast<giant *>(i.get())) {
+            giantCount++;
+        }
+
+        if (barbarianCount)
+            std::cout << barbarianCount << "x barbarians ";
+        else if (archerCount)
+            std::cout << archerCount << "x archers ";
+        else if (giantCount)
+            std::cout << giantCount << "x giants ";
     }
+
     std::cout << "\nSpells: ";
     for (const auto &i: spells) {
-        std::cout << i << '\n';
+        //std::cout << i << '\n';
+        unsigned int rageCount = 0, healCount = 0;
+        if (dynamic_cast<rage *>(i.get()))
+            rageCount++;
+        else if (dynamic_cast<heal *>(i.get()))
+            healCount++;
+        if (rageCount)
+            std::cout << rageCount << "x rage ";
+        else if (healCount)
+            std::cout << healCount << "x heal";
     }
     std::cout << '\n';
 }

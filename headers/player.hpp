@@ -48,9 +48,10 @@ public:
         return playerCount;
     }
 
+    // Prototypes
+
     void castCurrentSpell(std::unique_ptr<troop> &tr);
 
-    // Prototypes
     void viewCurrentArmy();
 
     void addTroop(std::unique_ptr<troop> troop);
