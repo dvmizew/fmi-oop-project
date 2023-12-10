@@ -49,28 +49,36 @@ void troop::increaseHealth(unsigned int amount) {
     hp += amount;
 }
 
-// Implementation for virtual pure functions of derived classes
-void barbarian::attack(troop &enemyTroop) {
-    std::cout << "Barbarian attacks!\n";
-    enemyTroop.decreaseHP(BASE_DAMAGE_BARB);
+void troop::increaseSpeed(unsigned int amount) {
+    speed += amount;
 }
 
-void barbarian::die() {
-    std::cout << "Here I come, Valhalla\n";
+// defining what attacking does to another troop, for each distinct troop
+void barbarian::attack(troop &enemyTroop) {
+    std::cout << "Barbarian attacks!\n";
+    // standard damage for a barbarian for the moment
+    enemyTroop.decreaseHP(BASE_DAMAGE_BARB);
 }
 
 void archer::attack(troop &enemyTroop) {
     std::cout << "Archer attacks!\n";
+    // standard damage for an archer for the moment
     enemyTroop.decreaseHP(BASE_DAMAGE_ARCH);
-}
-
-void archer::die() {
-    std::cout << "\n";
 }
 
 void giant::attack(troop &enemyTroop) {
     std::cout << "Giant attacks!\n";
+    // standard damage for a giant for the moment
     enemyTroop.decreaseHP(BASE_DAMAGE_GIANT);
+}
+
+// custom messages for each troop when they die
+void barbarian::die() {
+    std::cout << "Here I come, Valhalla\n";
+}
+
+void archer::die() {
+    std::cout << "\n";
 }
 
 void giant::die() {
