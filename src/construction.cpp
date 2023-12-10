@@ -10,6 +10,7 @@ std::ostream &operator<<(std::ostream &out, const construction &obj) {
     return out;
 }
 
+// overloading the assignment operator
 construction &construction::operator=(const construction &obj) {
     if (this != &obj) {
         this->hp = obj.hp;

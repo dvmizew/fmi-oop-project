@@ -11,6 +11,7 @@ int main() {
     barracks mainBarracks = barracks(1000, 1);
     barracks secondBarracks = barracks(1000, 1);
 
+    // creating the Spell Factories
     spellFactory mainSpellFactory = spellFactory(1000);
     spellFactory secondSpellFactory = spellFactory(1000);
 
@@ -48,12 +49,10 @@ int main() {
                 secondPlayer.viewCurrentArmy();
                 break;
             case 3:
-                // a function to create the army for the player
                 mainPlayer.createArmy();
                 secondPlayer.createArmy();
                 break;
             case 4:
-                // a function to test the attack method
                 mainPlayer.attackPlayer(secondPlayer);
                 break;
             case 5:
