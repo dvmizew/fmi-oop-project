@@ -15,14 +15,14 @@
 
 class troop {
 private:
-    unsigned int hp{}, damage = BASE_DAMAGE, trainingTime{}, spaceOccupied{}, elixirCost{};
+    unsigned int hp{}, damage = BASE_DAMAGE, trainingTime{}, spaceOccupied{}, elixirCost{}, speed{};
     bool damageType{}; // true for melee, false for ranged
 public:
     // init constructor
     troop(unsigned int hp, unsigned int damage, unsigned int trainingTime, unsigned int spaceOcuppied, bool damageType,
-          unsigned int elixirCost)
+          unsigned int elixirCost, unsigned int _speed)
             : hp(hp), damage(damage), trainingTime(trainingTime), spaceOccupied(spaceOcuppied),
-              elixirCost(elixirCost), damageType(damageType) {
+              elixirCost(elixirCost), speed(_speed), damageType(damageType) {
         std::cout << "Troop created!\n";
     }
 
@@ -50,6 +50,8 @@ public:
 
     void increaseHealth(unsigned int amount);
 
+    void increaseSpeed(unsigned int amount);
+
     // prototypes for virtual pure functions
     virtual void attack(troop &enemyTroop) = 0;
 
@@ -60,7 +62,7 @@ std::ostream &operator<<(std::ostream &out, const troop &obj);
 
 class barbarian : public troop {
 public:
-    barbarian() : troop(100, BASE_DAMAGE_BARB, 0, 1, true, 50) {
+    barbarian() : troop(100, BASE_DAMAGE_BARB, 0, 1, true, 50, 2) {
         std::cout << "Barbarian created!\n";
     }
 
@@ -77,7 +79,7 @@ public:
 
 class archer : public troop {
 public:
-    archer() : troop(50, BASE_DAMAGE_ARCH, 0, 1, false, 100) {
+    archer() : troop(50, BASE_DAMAGE_ARCH, 0, 1, false, 100, 3) {
         std::cout << "Archer created!\n";
     }
 
@@ -94,7 +96,7 @@ public:
 
 class giant : public troop {
 public:
-    giant() : troop(200, BASE_DAMAGE_GIANT, 0, 5, true, 500) {
+    giant() : troop(200, BASE_DAMAGE_GIANT, 0, 5, true, 500, 1) {
         std::cout << "Giant created!\n";
     }
 
