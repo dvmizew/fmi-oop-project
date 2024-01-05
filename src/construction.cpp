@@ -12,6 +12,7 @@ std::ostream &operator<<(std::ostream &out, const construction &obj) {
 
 // overloading the assignment operator
 construction &construction::operator=(const construction &obj) {
+    // checking if the object is not the same as the one we are assigning to
     if (this != &obj) {
         this->hp = obj.hp;
     }

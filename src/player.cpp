@@ -13,6 +13,7 @@
 
 // overloaded operator<< for printing the player's info
 std::ostream &operator<<(std::ostream &out, const player &obj) {
+    // printing the player's info
     out << "Town Hall level is: " << obj.townHallLevel;
     out << "\nName: " << obj.name << '\n';
     out << obj.xp << " XP\n" << obj.rank << " rank\n";
@@ -24,6 +25,7 @@ unsigned int player::playerCount = 0;
 
 // overloading the assignment operator
 player &player::operator=(const player &obj) {
+    // checking if the object is not the same as the one we are assigning to
     if (this != &obj) {
         this->xp = obj.xp;
         this->rank = obj.rank;
@@ -32,19 +34,19 @@ player &player::operator=(const player &obj) {
         this->townHallLevel = obj.townHallLevel;
         this->name = obj.name;
     }
-    return *this;
+    return *this; // returning the object
 }
 
 player player::createPlayer(unsigned int _xp, std::string _name) {
     // making sure that we could use the function by passing the arguments or by entering the name in console
-    std::string playerName = std::move(_name);
-    if (playerName.empty()) {
+    std::string playerName = std::move(_name); // moving the ownership of the string to the function
+    if (playerName.empty()) { // if the name is empty, we ask the user to enter it
         std::cout << "Enter player name: ";
         std::cin >> playerName;
     }
 
     playerCount++;
-    // the player should always starts the game with 0 xp
+    // the player should always start the game with 0 xp
     return {_xp, std::move(playerName)};
 }
 
@@ -54,6 +56,7 @@ void player::viewCurrentArmy() {
     for (const auto &i: troops) {
         // counting the number of troops in the army
         unsigned int barbarianCount = 0, archerCount = 0, giantCount = 0;
+        // checking if the troop is a barbarian, archer or giant and incrementing the counter
         if (dynamic_cast<barbarian *>(i.get())) {
             barbarianCount++;
         } else if (dynamic_cast<archer *>(i.get())) {
@@ -75,6 +78,7 @@ void player::viewCurrentArmy() {
     for (const auto &i: spells) {
         // counting the number of spells in the army
         unsigned int rageCount = 0, healCount = 0;
+        // checking if the spell is a rage or heal and incrementing the counter
         if (dynamic_cast<rage *>(i.get()))
             rageCount++;
         else if (dynamic_cast<heal *>(i.get()))
@@ -90,14 +94,15 @@ void player::viewCurrentArmy() {
 }
 
 void player::addTroop(std::unique_ptr<troop> troop) {
-    troops.emplace_back(std::move(troop));
+    troops.emplace_back(std::move(troop)); // moving the ownership of the troop pointer to the army
 }
 
 void player::addSpell(std::unique_ptr<spell> spell) {
-    spells.emplace_back(std::move(spell));
+    spells.emplace_back(std::move(spell)); // moving the ownership of the spell pointer to the army
 }
 
 std::unique_ptr<troop> player::getTroopAtIndex(size_t index) const {
+    // checking if the index is valid
     try {
         if (index >= troops.size()) {
             throw InvalidIndexException();
@@ -105,6 +110,8 @@ std::unique_ptr<troop> player::getTroopAtIndex(size_t index) const {
 
         std::unique_ptr<troop> clonedTroop;
         if (troops[index]) {
+            // cloning the troop and moving the ownership of the cloned troop to the unique pointer
+            // and release the ownership of the original troop through the reset function
             clonedTroop.reset(dynamic_cast<troop *>(troops[index]->clone().release()));
         }
         return clonedTroop;
@@ -116,6 +123,7 @@ std::unique_ptr<troop> player::getTroopAtIndex(size_t index) const {
 }
 
 std::unique_ptr<spell> player::getSpellAtIndex(size_t index) const {
+    // checking if the index is valid
     try {
         if (index >= spells.size()) {
             throw InvalidIndexException();
@@ -123,6 +131,8 @@ std::unique_ptr<spell> player::getSpellAtIndex(size_t index) const {
 
         std::unique_ptr<spell> clonedSpell;
         if (spells[index]) {
+            // cloning the spell and moving the ownership of the cloned spell to the unique pointer
+            // and release the ownership of the original spell through the reset function
             clonedSpell.reset(dynamic_cast<spell *>(spells[index]->clone().release()));
         }
         return clonedSpell;
@@ -134,11 +144,11 @@ std::unique_ptr<spell> player::getSpellAtIndex(size_t index) const {
 }
 
 void player::castCurrentSpell(std::unique_ptr<troop> &tr) {
-    if (!currentSpell) {
+    if (!currentSpell) { // if the current spell is a null pointer, we throw an exception
         throw NullPointerException();
     }
 
-    currentSpell->cast(tr);
+    currentSpell->cast(tr); // casting the spell on the troop
 }
 
 void player::createArmy() {
