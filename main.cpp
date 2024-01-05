@@ -1,6 +1,8 @@
 #include <iostream>
 #include <limits>
 #include "headers/player.hpp"
+#include "headers/barracks.h"
+#include "headers/spellFactory.h"
 
 void displayMenu() {
     std::cout << "Press the key for the desired option and press ENTER:\n";
