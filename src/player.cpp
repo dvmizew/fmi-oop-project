@@ -3,13 +3,13 @@
 //
 
 #include <utility>
-#include "../headers/custom_exceptions.h"
+#include "../headers/custom_exceptions.hpp"
 #include "../headers/player.hpp"
-#include "../headers/barbarian.h"
-#include "../headers/archer.h"
-#include "../headers/giant.h"
-#include "../headers/heal.h"
-#include "../headers/rage.h"
+#include "../headers/barbarian.hpp"
+#include "../headers/archer.hpp"
+#include "../headers/giant.hpp"
+#include "../headers/heal.hpp"
+#include "../headers/rage.hpp"
 
 // overloaded operator<< for printing the player's info
 std::ostream &operator<<(std::ostream &out, const player &obj) {

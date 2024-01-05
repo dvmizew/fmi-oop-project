@@ -2,7 +2,7 @@
 // Created by radud on 05.01.2024.
 //
 
-#include "../headers/giant.h"
+#include "../headers/giant.hpp"
 
 void giant::attack(troop &enemyTroop) {
     std::cout << "Giant attacks!\n";

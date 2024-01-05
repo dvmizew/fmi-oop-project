@@ -2,8 +2,8 @@
 // Created by radud on 05.01.2024.
 //
 
-#ifndef OOP_ARCHER_H
-#define OOP_ARCHER_H
+#ifndef OOP_ARCHER_HPP
+#define OOP_ARCHER_HPP
 
 #include "troop.hpp"
 
@@ -25,4 +25,4 @@ public:
 };
 
 
-#endif //OOP_ARCHER_H
+#endif //OOP_ARCHER_HPP

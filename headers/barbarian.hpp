@@ -2,8 +2,8 @@
 // Created by radud on 05.01.2024.
 //
 
-#ifndef OOP_BARBARIAN_H
-#define OOP_BARBARIAN_H
+#ifndef OOP_BARBARIAN_HPP
+#define OOP_BARBARIAN_HPP
 #include "troop.hpp"
 
 class barbarian : public troop {
@@ -23,4 +23,4 @@ public:
     void die() override;
 };
 
-#endif //OOP_BARBARIAN_H
+#endif //OOP_BARBARIAN_HPP

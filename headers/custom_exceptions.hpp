@@ -2,8 +2,8 @@
 // Created by radud on 26.11.2023.
 //
 
-#ifndef OOP_CUSTOM_EXCEPTIONS_H
-#define OOP_CUSTOM_EXCEPTIONS_H
+#ifndef OOP_CUSTOM_EXCEPTIONS_HPP
+#define OOP_CUSTOM_EXCEPTIONS_HPP
 
 #include <exception>
 
@@ -27,4 +27,4 @@ public:
     [[nodiscard]] const char *what() const noexcept override;
 };
 
-#endif //OOP_CUSTOM_EXCEPTIONS_H
+#endif //OOP_CUSTOM_EXCEPTIONS_HPP

@@ -2,8 +2,8 @@
 // Created by radud on 05.01.2024.
 //
 
-#ifndef OOP_HEAL_H
-#define OOP_HEAL_H
+#ifndef OOP_HEAL_HPP
+#define OOP_HEAL_HPP
 
 #include "spell.hpp"
 
@@ -20,4 +20,4 @@ public:
     }
 };
 
-#endif //OOP_HEAL_H
+#endif //OOP_HEAL_HPP

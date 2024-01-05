@@ -2,7 +2,7 @@
 // Created by radud on 05.01.2024.
 //
 
-#include "../headers/rage.h"
+#include "../headers/rage.hpp"
 
 // defining what raging a troop does
 void rage::cast(std::unique_ptr<troop> &tr) {

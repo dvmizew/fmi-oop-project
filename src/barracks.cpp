@@ -2,7 +2,7 @@
 // Created by radud on 05.01.2024.
 //
 
-#include "../headers/barracks.h"
+#include "../headers/barracks.hpp"
 
 // overloaded << operator for barracks class
 std::ostream &operator<<(std::ostream &out, const barracks &obj) {

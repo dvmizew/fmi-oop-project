@@ -99,22 +99,22 @@ add_executable(${PROJECT_NAME} main.cpp
         src/player.cpp
         src/spell.cpp
         src/troop.cpp
-        headers/custom_exceptions.h
+        headers/custom_exceptions.hpp
         src/custom_exceptions.cpp
         src/barbarian.cpp
-        headers/barbarian.h
+        headers/barbarian.hpp
         src/archer.cpp
-        headers/archer.h
+        headers/archer.hpp
         src/giant.cpp
-        headers/giant.h
+        headers/giant.hpp
         src/heal.cpp
-        headers/heal.h
+        headers/heal.hpp
         src/rage.cpp
-        headers/rage.h
+        headers/rage.hpp
         src/barracks.cpp
-        headers/barracks.h
+        headers/barracks.hpp
         src/spellFactory.cpp
-        headers/spellFactory.h
+        headers/spellFactory.hpp
 )
 
 ###############################################################################

@@ -2,8 +2,8 @@
 // Created by radud on 05.01.2024.
 //
 
-#ifndef OOP_RAGE_H
-#define OOP_RAGE_H
+#ifndef OOP_RAGE_HPP
+#define OOP_RAGE_HPP
 
 #include "spell.hpp"
 
@@ -21,4 +21,4 @@ public:
 };
 
 
-#endif //OOP_RAGE_H
+#endif //OOP_RAGE_HPP

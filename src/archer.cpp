@@ -2,7 +2,7 @@
 // Created by radud on 05.01.2024.
 //
 
-#include "../headers/archer.h"
+#include "../headers/archer.hpp"
 
 void archer::attack(troop &enemyTroop) {
     std::cout << "Archer attacks!\n";

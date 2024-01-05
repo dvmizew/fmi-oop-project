@@ -2,7 +2,7 @@
 // Created by radud on 01.12.2023.
 //
 
-#include "../headers/custom_exceptions.h"
+#include "../headers/custom_exceptions.hpp"
 
 const char *InvalidIndexException::what() const noexcept {
     return "Invalid index!\n";

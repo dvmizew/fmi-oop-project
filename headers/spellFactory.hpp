@@ -2,8 +2,8 @@
 // Created by radud on 05.01.2024.
 //
 
-#ifndef OOP_SPELLFACTORY_H
-#define OOP_SPELLFACTORY_H
+#ifndef OOP_SPELLFACTORY_HPP
+#define OOP_SPELLFACTORY_HPP
 
 #include "construction.hpp"
 
@@ -19,4 +19,4 @@ public:
 };
 
 
-#endif //OOP_SPELLFACTORY_H
+#endif //OOP_SPELLFACTORY_HPP

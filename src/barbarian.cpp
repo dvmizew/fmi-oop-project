@@ -2,7 +2,7 @@
 // Created by radud on 05.01.2024.
 //
 
-#include "../headers/barbarian.h"
+#include "../headers/barbarian.hpp"
 
 void barbarian::attack(troop &enemyTroop) {
     std::cout << "Barbarian attacks!\n";

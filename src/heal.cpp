@@ -2,7 +2,7 @@
 // Created by radud on 05.01.2024.
 //
 
-#include "../headers/heal.h"
+#include "../headers/heal.hpp"
 
 // defining what heal spell does to the troop
 void heal::cast(std::unique_ptr<troop> &tr) {

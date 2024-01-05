@@ -2,8 +2,8 @@
 // Created by radud on 05.01.2024.
 //
 
-#ifndef OOP_BARRACKS_H
-#define OOP_BARRACKS_H
+#ifndef OOP_BARRACKS_HPP
+#define OOP_BARRACKS_HPP
 
 #include "construction.hpp"
 
@@ -26,4 +26,4 @@ public:
 // prototype of the overloaded operator<< for barracks class
 std::ostream &operator<<(std::ostream &out, const barracks &obj);
 
-#endif //OOP_BARRACKS_H
+#endif //OOP_BARRACKS_HPP

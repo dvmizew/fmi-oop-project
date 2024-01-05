@@ -2,8 +2,8 @@
 // Created by radud on 05.01.2024.
 //
 
-#ifndef OOP_GIANT_H
-#define OOP_GIANT_H
+#ifndef OOP_GIANT_HPP
+#define OOP_GIANT_HPP
 
 
 #include "troop.hpp"
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif //OOP_GIANT_H
+#endif //OOP_GIANT_HPP
