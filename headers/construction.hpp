@@ -28,34 +28,4 @@ public:
 // prototype of the overloaded operator<< for construction class
 std::ostream &operator<<(std::ostream &out, const construction &obj);
 
-// class for the barracks construction
-class barracks : public construction {
-private:
-    unsigned int trainingRate{};
-    std::vector<std::unique_ptr<troop>> availableTroops{};
-    std::queue<std::unique_ptr<troop>> troopsInQueue{};
-public:
-    barracks(unsigned int hp, unsigned int trainingRate)
-            : construction(hp), trainingRate(trainingRate) {}
-
-    ~barracks() = default;
-
-    // friend function for overloading <<
-    friend std::ostream &operator<<(std::ostream &, const barracks &);
-};
-
-class spellFactory : public construction {
-private:
-    //unsigned int brewingRate{};
-    std::vector<std::unique_ptr<spell>> availableSpells{};
-    std::queue<std::unique_ptr<spell>> spellsInQueue{};
-public:
-    explicit spellFactory(unsigned int hp) : construction(hp) {}
-
-    ~spellFactory() = default;
-};
-
-// prototype of the overloaded operator<< for barracks class
-std::ostream &operator<<(std::ostream &out, const barracks &obj);
-
 #endif //OOP_CONSTRUCTION_HPP

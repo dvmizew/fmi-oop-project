@@ -107,6 +107,14 @@ add_executable(${PROJECT_NAME} main.cpp
         headers/archer.h
         src/giant.cpp
         headers/giant.h
+        src/heal.cpp
+        headers/heal.h
+        src/rage.cpp
+        headers/rage.h
+        src/barracks.cpp
+        headers/barracks.h
+        src/spellFactory.cpp
+        headers/spellFactory.h
 )
 
 ###############################################################################

@@ -6,8 +6,23 @@
 #define OOP_GIANT_H
 
 
-class giant {
+#include "troop.hpp"
 
+class giant : public troop {
+public:
+    giant() : troop(200, BASE_DAMAGE_GIANT, 0, 5, true, 500, 1) {
+        std::cout << "Giant created!\n";
+    }
+
+    std::unique_ptr<troop> clone() override {
+        return std::make_unique<giant>(*this);
+    }
+
+    ~giant() override = default;
+
+    void attack(troop &enemyTroop) override;
+
+    void die() override;
 };
 
 

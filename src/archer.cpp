@@ -2,4 +2,14 @@
 // Created by radud on 05.01.2024.
 //
 
-#include "archer.h"
+#include "../headers/archer.h"
+
+void archer::attack(troop &enemyTroop) {
+    std::cout << "Archer attacks!\n";
+    // standard damage for an archer for the moment
+    enemyTroop.decreaseHP(BASE_DAMAGE_ARCH);
+}
+
+void archer::die() {
+    std::cout << "\n";
+}

@@ -5,6 +5,11 @@
 #include <utility>
 #include "../headers/custom_exceptions.h"
 #include "../headers/player.hpp"
+#include "../headers/barbarian.h"
+#include "../headers/archer.h"
+#include "../headers/giant.h"
+#include "../headers/heal.h"
+#include "../headers/rage.h"
 
 // overloaded operator<< for printing the player's info
 std::ostream &operator<<(std::ostream &out, const player &obj) {
