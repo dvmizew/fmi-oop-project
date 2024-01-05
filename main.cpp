@@ -2,7 +2,17 @@
 #include <limits>
 #include "headers/player.hpp"
 
-// Main menu of the game
+void displayMenu() {
+    std::cout << "Press the key for the desired option and press ENTER:\n";
+    std::cout << "0. EXIT\n";
+    std::cout << "1. Add new player\n";
+    std::cout << "2. View the current army\n";
+    std::cout << "3. Create your army\n";
+    std::cout << "4. Attack the enemy\n";
+    std::cout << "5. View the player count\n";
+    std::cout << "Your choice: ";
+}
+
 int main() {
     player mainPlayer = player::createPlayer(0, "You");
     player secondPlayer = player::createPlayer(0, "Alfred");
@@ -18,15 +28,7 @@ int main() {
     // a "infinitely" running loop for the main menu
     unsigned int choice{};
     do {
-        std::cout << "Main menu\n\n";
-        std::cout << "Press the key for the desired option and press ENTER:\n";
-        std::cout << "0. EXIT\n";
-        std::cout << "1. Add new player\n";
-        std::cout << "2. View the current army\n";
-        std::cout << "3. Create your army\n";
-        std::cout << "4. Attack the enemy\n";
-        std::cout << "5. View the player count\n";
-        std::cout << "Your choice: ";
+        displayMenu();
         try {
             std::cin >> choice;
             if (choice > 5)
@@ -60,6 +62,7 @@ int main() {
                 break;
             default:
                 std::cout << "Invalid choice. Please try again.\n";
+                break;
         }
     } while (choice != 0);
 

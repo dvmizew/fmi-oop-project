@@ -101,6 +101,12 @@ add_executable(${PROJECT_NAME} main.cpp
         src/troop.cpp
         headers/custom_exceptions.h
         src/custom_exceptions.cpp
+        src/barbarian.cpp
+        headers/barbarian.h
+        src/archer.cpp
+        headers/archer.h
+        src/giant.cpp
+        headers/giant.h
 )
 
 ###############################################################################
