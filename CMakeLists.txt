@@ -115,6 +115,8 @@ add_executable(${PROJECT_NAME} main.cpp
         headers/barracks.hpp
         src/spellFactory.cpp
         headers/spellFactory.hpp
+        src/menu.cpp
+        headers/menu.hpp
 )
 
 ###############################################################################
