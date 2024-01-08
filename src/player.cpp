@@ -154,31 +154,40 @@ void player::createArmy() {
 void player::attackPlayer(player &enemyPlayer) {
     std::cout << "To the battle!\n";
 
-    // Check if the enemy player has troops
-    if (enemyPlayer.troops.empty()) {
-        throw NoTroopsException(); // we throw an exception if the enemy player has no troops
-    }
+    try {
+        // Get the first troop from the enemy and my army
+        auto enemyTroop = enemyPlayer.getItemAtIndex(0, enemyPlayer.troops);
+        auto myTroop = getItemAtIndex(0, troops);
 
-    // Attack the enemy player with the first troop if available
-    auto enemyTroop = enemyPlayer.getItemAtIndex(0, enemyPlayer.troops);
-    if (troops.empty()) {
-        throw NoTroopsException(); // we throw an exception if the player has no troops
-    }
-    auto myTroop = getItemAtIndex(0, troops); // we get the first troop from the army
-    attackEnemyTroop(enemyPlayer, 0, 0); // we attack the enemy troop
+        if (!enemyTroop || !myTroop) {
+            throw NullPointerException();
+        }
 
-    // Check if the enemy player has spells
-    if (enemyPlayer.spells.empty()) {
-        throw NoSpellsException();
-    }
+        // Attack the enemy troop using the attackEnemyTroop method
+        attackEnemyTroop(enemyPlayer, 0, 0);
 
-    // Cast a spell on the enemy player with the first spell if available
-    auto enemySpell = enemyPlayer.getItemAtIndex(0, enemyPlayer.spells);
-    if (spells.empty()) {
-        throw NoSpellsException();
+        // Check if the enemy player has spells
+        auto enemySpell = enemyPlayer.getItemAtIndex(0, enemyPlayer.spells);
+        if (enemyPlayer.spells.empty()) {
+            throw NoSpellsException();
+        }
+
+        // Cast a spell on the enemy troop
+        auto mySpell = getItemAtIndex(0, spells);
+        castSpellOnTroop(myTroop, 0);
     }
-    auto mySpell = getItemAtIndex(0, spells);
-    castSpellOnTroop(myTroop, 0);
+    catch (InvalidIndexException &e) {
+        std::cout << e.what();
+    }
+    catch (NullPointerException &e) {
+        std::cout << e.what();
+    }
+    catch (NoSpellsException &e) {
+        std::cout << e.what();
+    }
+    catch (NoTroopsException &e) {
+        std::cout << e.what();
+    }
 }
 
 void player::castSpellOnTroop(std::unique_ptr<troop> &tr, unsigned int spellIndex) {
@@ -202,28 +211,23 @@ void player::castSpellOnTroop(std::unique_ptr<troop> &tr, unsigned int spellInde
     castCurrentSpell(tr);
 }
 
-void player::attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex) {
+void player::attackEnemyTroop(const player &enemyPlayer, size_t troopIndex, size_t enemyTroopIndex) {
     try {
         // checking if the both troops are in the bounds of the army of each player
-        if (troopIndex >= troops.size() || enemyTroopIndex >= enemyPlayer.troops.size()) {
-            throw InvalidIndexException();
+        auto myTroop = getItemAtIndex(troopIndex, troops);
+        auto enemyTroop = enemyPlayer.getItemAtIndex(enemyTroopIndex, enemyPlayer.troops);
+
+        if (!myTroop || !enemyTroop) {
+            throw NullPointerException();
         }
+
+        // we finally attack
+        myTroop->attack(*enemyTroop);
     }
     catch (InvalidIndexException &e) {
         std::cout << e.what();
-        return;
     }
-
-    // setting the currentTroop and the enemyTroop as the ONES that will attack after we check that they exist
-    const auto &currentTroop = troops[troopIndex];
-    const auto &enemyTroop = enemyPlayer.troops[enemyTroopIndex];
-
-    // checking that currentTroop and enemyTroop are not null pointers after all
-    if (!currentTroop || !enemyTroop) {
-        throw NullPointerException();
+    catch (NullPointerException &e) {
+        std::cout << e.what();
     }
-
-    // we finally attack
-    //troops[troopIndex]->attack(*enemyPlayer.troops[enemyTroopIndex]);
-    currentTroop->attack(*enemyTroop);
 }

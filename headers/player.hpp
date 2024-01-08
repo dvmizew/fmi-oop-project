@@ -59,7 +59,8 @@ public:
 
     void createArmy();
 
-    void attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
+//    void attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
+    void attackEnemyTroop(const player &enemyPlayer, size_t troopIndex, size_t enemyTroopIndex);
 
     void castSpellOnTroop(std::unique_ptr<troop> &tr, unsigned int spellIndex);
 
