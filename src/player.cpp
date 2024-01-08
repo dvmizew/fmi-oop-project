@@ -102,7 +102,8 @@ void player::addSpell(std::unique_ptr<spell> spell) {
 }
 
 template<typename ItemType>
-std::unique_ptr<ItemType> player::getItemAtIndex(size_t index, const std::vector<std::unique_ptr<ItemType>>& items) const {
+std::unique_ptr<ItemType>
+player::getItemAtIndex(size_t index, const std::vector<std::unique_ptr<ItemType>> &items) const {
     try {
         if (index >= items.size()) {
             throw InvalidIndexException();
@@ -110,7 +111,7 @@ std::unique_ptr<ItemType> player::getItemAtIndex(size_t index, const std::vector
 
         std::unique_ptr<ItemType> clonedItem;
         if (items[index]) {
-            clonedItem.reset(dynamic_cast<ItemType*>(items[index]->clone().release()));
+            clonedItem.reset(dynamic_cast<ItemType *>(items[index]->clone().release()));
         }
         return clonedItem;
     }

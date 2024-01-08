@@ -11,5 +11,5 @@ void archer::attack(troop &enemyTroop) {
 }
 
 void archer::die() {
-    std::cout << "\n";
+    std::cout << "I'm going to Valhalla!\n";
 }

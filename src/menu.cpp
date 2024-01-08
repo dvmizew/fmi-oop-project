@@ -20,13 +20,14 @@ void menu::displayMenu() {
 }
 
 void menu::createConstructions() {
-     barracks mainBarracks = barracks(1000, 1);
-     barracks secondBarracks = barracks(1000, 1);
-     spellFactory mainSpellFactory = spellFactory(1000);
-     spellFactory secondSpellFactory = spellFactory(1000);
+    barracks mainBarracks = barracks(1000, 1);
+    barracks secondBarracks = barracks(1000, 1);
+    spellFactory mainSpellFactory = spellFactory(1000);
+    spellFactory secondSpellFactory = spellFactory(1000);
 }
 
-void menu::getUserInput(player& mainPlayer, player& secondPlayer) {
+void menu::getUserInput(player &mainPlayer, player &secondPlayer) {
+    // The user input is read as an unsigned int and then checked for validity
     unsigned int choice{};
     do {
         displayMenu();
@@ -39,6 +40,7 @@ void menu::getUserInput(player& mainPlayer, player& secondPlayer) {
                 throw std::invalid_argument("Invalid choice. Please try again.\n");
             }
 
+            // Switch case for the menu
             switch (choice) {
                 case 0:
                     std::cout << "Exiting the program.\n";
