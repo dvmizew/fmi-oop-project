@@ -101,41 +101,18 @@ void player::addSpell(std::unique_ptr<spell> spell) {
     spells.emplace_back(std::move(spell)); // moving the ownership of the spell pointer to the army
 }
 
-std::unique_ptr<troop> player::getTroopAtIndex(size_t index) const {
-    // checking if the index is valid
+template<typename ItemType>
+std::unique_ptr<ItemType> player::getItemAtIndex(size_t index, const std::vector<std::unique_ptr<ItemType>>& items) const {
     try {
-        if (index >= troops.size()) {
+        if (index >= items.size()) {
             throw InvalidIndexException();
         }
 
-        std::unique_ptr<troop> clonedTroop;
-        if (troops[index]) {
-            // cloning the troop and moving the ownership of the cloned troop to the unique pointer
-            // and release the ownership of the original troop through the reset function
-            clonedTroop.reset(dynamic_cast<troop *>(troops[index]->clone().release()));
+        std::unique_ptr<ItemType> clonedItem;
+        if (items[index]) {
+            clonedItem.reset(dynamic_cast<ItemType*>(items[index]->clone().release()));
         }
-        return clonedTroop;
-    }
-    catch (InvalidIndexException &e) {
-        std::cout << e.what();
-        throw;
-    }
-}
-
-std::unique_ptr<spell> player::getSpellAtIndex(size_t index) const {
-    // checking if the index is valid
-    try {
-        if (index >= spells.size()) {
-            throw InvalidIndexException();
-        }
-
-        std::unique_ptr<spell> clonedSpell;
-        if (spells[index]) {
-            // cloning the spell and moving the ownership of the cloned spell to the unique pointer
-            // and release the ownership of the original spell through the reset function
-            clonedSpell.reset(dynamic_cast<spell *>(spells[index]->clone().release()));
-        }
-        return clonedSpell;
+        return clonedItem;
     }
     catch (InvalidIndexException &e) {
         std::cout << e.what();
@@ -176,21 +153,32 @@ void player::createArmy() {
 
 void player::attackPlayer(player &enemyPlayer) {
     std::cout << "To the battle!\n";
-    // check if the player has troops
-    if (enemyPlayer.getTroopAtIndex(0)) {
-        // attack the enemy player
-        attackEnemyTroop(enemyPlayer, 0, 0);
-    } else {
-        throw NoTroopsException();
+
+    // Check if the enemy player has troops
+    if (enemyPlayer.troops.empty()) {
+        throw NoTroopsException(); // we throw an exception if the enemy player has no troops
     }
 
-    // check if the player has spells
-    if (enemyPlayer.getSpellAtIndex(0)) {
-        // cast a spell on the enemy player
-        castSpellOnTroop(enemyPlayer.troops[0], 0);
-    } else {
+    // Attack the enemy player with the first troop if available
+    auto enemyTroop = enemyPlayer.getItemAtIndex(0, enemyPlayer.troops);
+    if (troops.empty()) {
+        throw NoTroopsException(); // we throw an exception if the player has no troops
+    }
+    auto myTroop = getItemAtIndex(0, troops); // we get the first troop from the army
+    attackEnemyTroop(enemyPlayer, 0, 0); // we attack the enemy troop
+
+    // Check if the enemy player has spells
+    if (enemyPlayer.spells.empty()) {
         throw NoSpellsException();
     }
+
+    // Cast a spell on the enemy player with the first spell if available
+    auto enemySpell = enemyPlayer.getItemAtIndex(0, enemyPlayer.spells);
+    if (spells.empty()) {
+        throw NoSpellsException();
+    }
+    auto mySpell = getItemAtIndex(0, spells);
+    castSpellOnTroop(myTroop, 0);
 }
 
 void player::castSpellOnTroop(std::unique_ptr<troop> &tr, unsigned int spellIndex) {

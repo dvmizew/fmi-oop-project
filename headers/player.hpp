@@ -40,9 +40,8 @@ public:
     }
 
     // getters
-    [[nodiscard]] std::unique_ptr<troop> getTroopAtIndex(size_t index) const;
-
-    [[nodiscard]] std::unique_ptr<spell> getSpellAtIndex(size_t index) const;
+    template<typename ItemType>
+    std::unique_ptr<ItemType> getItemAtIndex(size_t index, const std::vector<std::unique_ptr<ItemType>> &items) const;
 
     static unsigned int getPlayerCount() {
         return playerCount;
