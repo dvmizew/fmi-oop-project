@@ -2,13 +2,13 @@
 #include "headers/menu.hpp"
 
 int main() {
-    player mainPlayer = player::createPlayer(0, "You");
-    player secondPlayer = player::createPlayer(0, "Alfred");
+    menu &mainMenu = menu::getInstance();
 
-    menu::createConstructions(); // create the constructions
+    player player1(0, ""), player2(0, "");
 
-    // get the user input and display the menu
-    menu::getUserInput(mainPlayer, secondPlayer);
+    mainMenu.createBasePlayers(player1, player2);
+    mainMenu.createConstructions();
 
+    mainMenu.getUserInput(player1, player2);
     return 0;
 }

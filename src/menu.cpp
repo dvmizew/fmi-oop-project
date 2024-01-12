@@ -8,6 +8,12 @@
 #include <iostream>
 #include <limits>
 
+// Singleton instance getter
+menu &menu::getInstance() {
+    static menu instance;
+    return instance;
+}
+
 void menu::displayMenu() {
     std::cout << "Press the key for the desired option and press ENTER:\n";
     std::cout << "0. EXIT\n";
@@ -17,6 +23,11 @@ void menu::displayMenu() {
     std::cout << "4. Attack the enemy\n";
     std::cout << "5. View the player count\n";
     std::cout << "Your choice: ";
+}
+
+void menu::createBasePlayers(player &mainPlayer, player &secondPlayer) {
+    mainPlayer = player::createPlayer(0, "You");
+    secondPlayer = player::createPlayer(0, "Alfred");
 }
 
 void menu::createConstructions() {
