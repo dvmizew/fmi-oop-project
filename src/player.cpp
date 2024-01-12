@@ -11,6 +11,8 @@
 #include "../headers/heal.hpp"
 #include "../headers/rage.hpp"
 
+unsigned int player::playerCount = 0;
+
 // overloaded operator<< for printing the player's info
 std::ostream &operator<<(std::ostream &out, const player &obj) {
     // printing the player's info
@@ -20,8 +22,6 @@ std::ostream &operator<<(std::ostream &out, const player &obj) {
     out << "It unlocked " << obj.availableTroops << " troops and " << obj.availableSpells << " spells\n\n";
     return out;
 }
-
-unsigned int player::playerCount = 0;
 
 // overloading the assignment operator
 player &player::operator=(const player &obj) {
@@ -37,17 +37,9 @@ player &player::operator=(const player &obj) {
     return *this; // returning the object
 }
 
-player player::createPlayer(unsigned int _xp, std::string _name) {
-    // making sure that we could use the function by passing the arguments or by entering the name in console
-    std::string playerName = std::move(_name); // moving the ownership of the string to the function
-    if (playerName.empty()) { // if the name is empty, we ask the user to enter it
-        std::cout << "Enter player name: ";
-        std::cin >> playerName;
-    }
-
-    playerCount++;
-    // the player should always start the game with 0 xp
-    return {_xp, std::move(playerName)};
+// createPlayer factory method
+std::unique_ptr<player> player::createPlayer(unsigned int _xp, const std::string &_name) {
+    return std::make_unique<player>(_xp, _name);
 }
 
 void player::viewCurrentArmy() {
@@ -119,6 +111,10 @@ player::getItemAtIndex(size_t index, const std::vector<std::unique_ptr<ItemType>
         std::cout << e.what();
         throw;
     }
+}
+
+unsigned int player::getPlayerCount() {
+    return playerCount;
 }
 
 void player::castCurrentSpell(std::unique_ptr<troop> &tr) {

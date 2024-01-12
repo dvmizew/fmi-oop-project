@@ -25,9 +25,9 @@ void menu::displayMenu() {
     std::cout << "Your choice: ";
 }
 
-void menu::createBasePlayers(player &mainPlayer, player &secondPlayer) {
-    mainPlayer = player::createPlayer(0, "You");
-    secondPlayer = player::createPlayer(0, "Alfred");
+void menu::createBasePlayers(std::unique_ptr<player> &mainPlayer, std::unique_ptr<player> &secondPlayer) {
+    mainPlayer = player::createPlayer(0, "Player 1");
+    secondPlayer = player::createPlayer(0, "Player 2");
 }
 
 void menu::createConstructions() {
@@ -37,7 +37,7 @@ void menu::createConstructions() {
     spellFactory secondSpellFactory = spellFactory(1000);
 }
 
-void menu::getUserInput(player &mainPlayer, player &secondPlayer) {
+void menu::getUserInput(std::unique_ptr<player> &mainPlayer, std::unique_ptr<player> &secondPlayer) {
     // The user input is read as an unsigned int and then checked for validity
     unsigned int choice{};
     do {
@@ -61,15 +61,15 @@ void menu::getUserInput(player &mainPlayer, player &secondPlayer) {
                     break;
                 }
                 case 2:
-                    mainPlayer.viewCurrentArmy();
-                    secondPlayer.viewCurrentArmy();
+                    mainPlayer->viewCurrentArmy();
+                    secondPlayer->viewCurrentArmy();
                     break;
                 case 3:
-                    mainPlayer.createArmy();
-                    secondPlayer.createArmy();
+                    mainPlayer->createArmy();
+                    secondPlayer->createArmy();
                     break;
                 case 4:
-                    mainPlayer.attackPlayer(secondPlayer);
+                    mainPlayer->attackPlayer(*secondPlayer);
                     break;
                 case 5:
                     std::cout << "The player count is: " << player::getPlayerCount() << std::endl;

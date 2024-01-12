@@ -16,9 +16,9 @@ public:
 
     static void createConstructions();
 
-    static void createBasePlayers(player &mainPlayer, player &secondPlayer);
+    static void createBasePlayers(std::unique_ptr<player> &mainPlayer, std::unique_ptr<player> &secondPlayer);
 
-    static void getUserInput(player &mainPlayer, player &secondPlayer);
+    static void getUserInput(std::unique_ptr<player> &mainPlayer, std::unique_ptr<player> &secondPlayer);
 
     menu(const menu &) = delete; // Delete copy constructor
     menu &operator=(const menu &) = delete; // Delete assignment operator
@@ -26,7 +26,6 @@ public:
 private:
     menu() = default; // Private constructor to prevent direct instantiation
     ~menu() = default; // Private destructor to prevent deletion
-
 };
 
 #endif //OOP_MENU_HPP

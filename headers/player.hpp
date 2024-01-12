@@ -14,6 +14,7 @@
 #include "spell.hpp"
 #include "construction.hpp"
 
+// Factory Method Design Pattern
 class player {
 private:
     static unsigned int playerCount;
@@ -24,28 +25,27 @@ private:
     std::vector<std::unique_ptr<spell>> spells{}; // the player's spells
 
 public:
-    // init constructor
     player(unsigned int _xp, std::string _name) : xp(_xp), name(std::move(_name)) {
+        playerCount++;
         std::cout << "Player created! Name: " << name << '\n';
     }
 
-    // destructor
+    // Destructor
     ~player() = default;
 
-    static player createPlayer(unsigned int _xp, std::string _name);
+    // Factory method
+    static std::unique_ptr<player> createPlayer(unsigned int _xp, const std::string& _name);
 
-    // setters
+    // Setters
     void setCurrentSpell(spell *ptr) {
         currentSpell = ptr;
     }
 
-    // getters
+    // Getters
     template<typename ItemType>
     std::unique_ptr<ItemType> getItemAtIndex(size_t index, const std::vector<std::unique_ptr<ItemType>> &items) const;
 
-    static unsigned int getPlayerCount() {
-        return playerCount;
-    }
+    static unsigned int getPlayerCount();
 
     // Prototypes
 
@@ -59,7 +59,6 @@ public:
 
     void createArmy();
 
-//    void attackEnemyTroop(const player &enemyPlayer, unsigned int troopIndex, size_t enemyTroopIndex);
     void attackEnemyTroop(const player &enemyPlayer, size_t troopIndex, size_t enemyTroopIndex);
 
     void castSpellOnTroop(std::unique_ptr<troop> &tr, unsigned int spellIndex);
